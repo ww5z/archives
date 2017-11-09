@@ -1,0 +1,38 @@
+
+/** ##################### row-fluid ################ */
+
+
+
+
+
+.row-fluid [class*="span"] {
+	display: block;
+	width: 100%;
+	min-height: 28px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: right;
+	margin-left: 2.1276595744681%;
+	margin-left: 2.0744680851064%;
+}
+.row-fluid [class*="span"]:first-child {
+	margin-left: 0;
+}
+
+
+
+.row-fluid .span6 {
+	width: 48.936170212766%;
+	*width: 48.882978723404%;
+}
+
+/** حجم الحقول **/
+#NoComputer {
+    background-color: #FFFFCC;
+    width: 90px;
+}
+
+.menuRe {
+    width: 140px;
+}
