@@ -80,315 +80,139 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
+          <h1 class="page-header">ملفات الموظفين</h1>
 
-          <div class="row placeholders">
-<div id="publishing" class="tab-pane active">
-			<div class="row-fluid">
-
-                            
-
-                            
-                            
-<div class="span6">
-
-    <div class="control-group">
-        <div class="control-label">
-        <label id="jform_publish_up-lbl" for="NoComputer" class="hasTooltip" title="" data-original-title="بحث بالرقم">بحث بالرقم</label>
-        </div>
-        <div class="controls">
-            <div class="input-append" id="input_no">
-            <input title="" class="menu" type="text" id="NoComputer" name="NoComputer" 
-         value="<?php if (isset($ResolutionNO)) echo htmlspecialchars($ResolutionNO); ?>" />
-            <span id="NoCoMsg" style="color: red;"></span>
+          
+          
+          
+          
+          
+          
+          
             
-            <span id="alert_subject" style="color: red;"></span>
-            
+
+<br /> 
+
+<form class="form-inline">
+    
+    <div class="form-group" id="messge_icons">
+      <input type="text" class="form-control" id="NoComputer" placeholder="رقم الحاسب">
+      <span class="glyphicon glyphicon-ok form-control-feedback tchcktoright" aria-hidden="true"></span>
+      <span id="inputSuccess2Status" class="sr-only">(success)</span>
+      <span id="no_tchck"></span>
+
+  </div>
+  <div class="form-group" >
+      <input type="text" class="form-control" id="card_number" placeholder="رقم البطاقة">
+  </div>  
+
+    <button type="button" id="edit_employees" value="0" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" disabled="disabled">تحرير البيانات</button>
+
+</form>
+
+<br /> 
+
+<table class="table table-bordered rtl_table">
+    
+  <thead>
+      <tr> 
+          <th>اسم الموظف</th> <th>جهة الموظف</th> <th>المرتبة</th> <th>رقم الوظيفة</th>  <th>مسمى الوظيفة</th>  <th>ملاحظـــات</th> 
+      </tr> 
+  </thead>
+  
+  <tbody> 
+      <tr> 
+          <th scope="row" id="incumbent">Null</th> <td id="description_hand_employee">Null</td> <td id="grade">Null</td> <td id="idJob">Null</td>  <td id="JobTitle">Null</td> <td>Null</td> 
+      </tr> 
+  </tbody>
+  
+</table>
+    <br />   
+
+
+    
+    
+    <div class="modal fade bs-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">تعديل البيانات</h4>
+      </div>
+
+<div class="modal-body">
+        <div id="insert_messg"></div>
+    <form class="form-inline" id="form_edit_employees">
+	
+            <div class="list-group listt_grouPP">
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">رقم الحاسب:</label>
+                            <input type="text" class="form-control" name="form_NoComputer" id="form_NoComputer" size="20">
+                    </div>
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">رقم البطاقة:</label>
+                            <input type="text" class="form-control" name="form_card_number" id="form_card_number" size="20">
+                    </div>
             </div>
-        </div>
-    </div>
-    
 
-    
-    <div class="control-group">
-        <div class="control-label">
-        <label id="jform_publish_up-lbl" for="ResolutionNO" class="hasTooltip" title="" data-original-title="رقم قرار المعاملة">رقم القرار</label>
-        </div>
-        <div class="controls">
-            <div id="d_RN" class="input-append">
-            <input type="text" title="رقم قرار المعاملة" class="menuRe" id="ResolutionNO" name="ResolutionNO" maxlength="60"
-               value="" />
-            <select name="date_ResolutionNO" class="menuRe" id="date_ResolutionNO" title="تاريخ قرار المعاملة">
-                    <?php
-                    foreach($date_Re_1 as $model) {
-                    echo '<option';
-                    if ($date_Re == $model) {
-                    echo ' selected';
-                    }
-                    
-                    echo '>'.$model.'</option>';
-                    }
-                    ?>
-            </select>
+            <div class="list-group">
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">اسم الموظف:</label>
+                            <input type="text" class="form-control" name="form_incumbent" id="form_incumbent">
+                    </div>
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">جهة الموظف:</label>
+                            <input type="text" class="form-control" name="form_description_hand_employee" id="form_description_hand_employee">
+                    </div>
             </div>
-        </div>
-    </div>    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="control-group">
-        <div class="control-label">
-        <label id="jform_publish_up-lbl" for="subject" class="hasTooltip" title="" data-original-title="الموضوع">الموضوع</label>
-        </div>
-        <div class="controls">
-            <div class="input-append">
-            <input title="" class="subject" type="text" id="subject" name="subject"  tabindex="2" 
-         value="" />
+
+            <div class="list-group">
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">المرتبة:</label>
+                            <input type="text" class="form-control" name="form_grade" id="form_grade">
+                    </div>
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">رقم الوظيفة:</label>
+                            <input type="text" class="form-control"  name="form_idJob" id="form_idJob">
+                    </div>
             </div>
-        </div>
-    </div>
 
-
-    
-    <div class="control-group">
-        <div class="control-label">
-        <label id="jform_publish_up-lbl" for="appendNO" class="hasTooltip">قرار الحاقي</label>
-        </div>
-        <div class="controls">
-            <div id="d_RN" class="input-append">
-            <input type="text" title="رقم القرار الإلحاقي" class="menuRe" id="appendNO" name="appendNO" maxlength="60"
-               value="" />
-            <select name="date_appendNO" class="menuRe" id="date_appendNO" title="تاريخ القرار الإلحاقي">
-            
-                <option value="0" selected="selected">  </option>
-                <option value="1435">1435</option>
-                <option value="1436">1436</option>
-                <option value="1437">1437</option>
-                <option value="1438">1438</option>
-                <option value="1439">1439</option>
-            </select>
+            <div class="list-group">
+                    <div class="form-group">
+                            <label for="recipient-name" class="control-label">مسمى الوظيفة:</label>
+                            <input type="text" class="form-control" name="form_JobTitle" id="form_JobTitle">
+                    </div>
+                    <div class="form-group">
+                            <label for="message-text" class="control-label">ملاحظـــات:</label>
+                            <textarea class="form-control" name="form_notes" id="form_notes"></textarea>
+                    </div>
             </div>
-        </div>
-    </div>
-    
-    
+        
+        <input type="hidden" name="form_id_employees_hid" id="form_id_employees_hid" value="" />
 
-<div class="control-group">
-    <div class="control-label">
-    <label id="" for="" class="hasTooltip" title="">تاريخ الإنشاء</label>
-    </div>
-    <div class="controls">
-    <div class="input-append">
-        <input type="text" title="" name="" id="jform_created" value="" readonly="">
-    
-    </div>
-    </div>
+    </form>
 </div>
-    
-    
- 
-
-
-			
-
-</div>
-                            
-				
-                
-
-
-
-
-<div class="span6">
-			
-
-    
-    
-
-
-<div class="control-group">
-<div class="control-label">
-    <label id="jform_metadata_xreference-lbl" for="m_fo" class="hasTooltip" title="">ملاحظـــات</label>
-</div>
-<div class="controls">
-    
-
-   
-    <textarea cols="30" id="m_fo" name="m_fo" placeholder="هذه الملاحظات تنتقل إلى التسلسل" cols="30" rows="3">
-    </textarea>
-</div>
-</div>    
-                    
-
-
-    <div class="control-group">
-        <div class="control-label">
-            <label id="jform_metadata_xreference-lbl" for="card_number" class="hasTooltip" title="">الموظــــف</label>
-        </div>
-        <div class="controls">
-            <input type="text" id="employee_number" name="employee_number"  placeholder="الحاسب" size="7" maxlength="60" value="" />
-            <input type="text" id="card_number" name="card_number"  placeholder="السجل المدني" size="10" maxlength="60" value="" />
-            <input type="text" id="employee_name" name="employee_name"  placeholder="" size="20" maxlength="60" value="" />
-            <span id="link_emolyee_img"></span>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="form_id_employees">حفــظ التعديـلات</button>
+      </div>
     </div>
-                <input type="hidden" id="id_employees" name="id_employees"  placeholder="" size="10" maxlength="60" value="0" />
-    
-    
-    
-
-    
-                
-                
-                </div>
-
-                        </div>
-    
-
-
+  </div>
 </div>
-              
-          </div>
+          
+          
+          
+          
           
           
           
 
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <h2 class="sub-header">عرض الملفات</h2>
+          
+          <div id="procedure"></div>
+          
+          
+          
         </div>
       </div>
     </div>
@@ -396,11 +220,18 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="./js/vendor/holder.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="./js/ie10-viewport-bug-workaround.js"></script>
+    <script src="./js/empemployees.js"></script>
   </body>
 </html>
+
+<script>
+    $( document ).ready( function(){
+        //alert('dd');
+    } );
+</script>
