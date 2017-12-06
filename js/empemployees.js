@@ -113,7 +113,7 @@ function take_form(nocm, post_1){
                     $( '#edit_employees' ).val(person.id_employe); //زر التحرير
                     
                     
-                    take_followup_start(person.id);
+                    take_followup_start(person.id_employe);
                     
                         $( "#messge_icons" ).removeClass( "has-error has-warning" ).addClass( "has-success" );
                         $("#no_tchck").html(with_success);

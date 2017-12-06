@@ -119,14 +119,14 @@
               <tbody>
                 <tr>
                   <td>1,001</td>
-                  <td>Lorem</td>
+                  <td><a href="empemployees.php">ملفات الموظف</a></td>
                   <td>ipsum</td>
                   <td>dolor</td>
                   <td>sit</td>
                 </tr>
                 <tr>
                   <td>1,002</td>
-                  <td>amet</td>
+                  <td><a href="files_upload.php">رقع الملفات</a></td>
                   <td>consectetur</td>
                   <td>adipiscing</td>
                   <td>elit</td>

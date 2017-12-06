@@ -1,0 +1,184 @@
+﻿body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "Times New Roman", Times, serif;
+	color: #333;
+	background-color: white;
+}
+	
+h1 {
+	margin:0px 0px 15px 0px;
+	padding:0px;
+	font-size:28px;
+	line-height:28px;
+	font-weight:900;
+	color:#ccc;
+	}
+/**	
+p {
+	font:11px/20px verdana, arial, helvetica, sans-serif;
+	margin:0px 0px 16px 0px;
+	padding:0px;
+	}
+	*/
+#Content>p {margin:0px; text-indent:30px;}
+
+a {
+	color:#09c;
+	font-size:11px;
+	text-decoration:none;
+	font-weight:600;
+	font-family:verdana, arial, helvetica, sans-serif;
+	}
+	
+a:link {color:#09c;}
+
+a:visited {color:#07a;}
+
+a:hover {background-color:#eee;}
+
+#Header {
+	font-size:24px;
+	margin:50px 0px 10px 0px;
+	padding:17px 0px 0px 20px;
+	/* For IE5/Win's benefit height = [correct height] + [top padding] + [top and bottom border widths] */
+	height:33px; /* 14px + 17px + 2px = 33px */
+	border-style:solid;
+	border-color:black;
+	border-width:1px 0px; /* top and bottom borders: 1px; left and right borders: 0px */
+	line-height:11px;
+	background-color:#eee;
+
+/* Here is the ugly brilliant hack that protects IE5/Win from its own stupidity. 
+Thanks to Tantek Celik for the hack and to Eric Costello for publicizing it. 
+IE5/Win incorrectly parses the "\"}"" value, prematurely closing the style 
+declaration. The incorrect IE5/Win value is above, while the correct value is 
+below. See http://glish.com/css/hacks.asp for details. */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	height:14px; /* the correct height */
+	}
+/* I've heard this called the "be nice to Opera 5" rule. Basically, it feeds correct 
+length values to user agents that exhibit the parsing error exploited above yet get 
+the CSS box model right and understand the CSS2 parent-child selector. ALWAYS include
+a "be nice to Opera 5" rule every time you use the Tantek Celik hack (above). */
+body>#Header {height:14px;}
+
+#Content {
+	margin:0px 210px 50px 10px;
+	padding:10px;
+	}
+
+#Menu {
+	position:absolute;
+	top:100px;
+	right:20px;
+	width:172px;
+	padding:10px;
+	background-color:#eee;
+	border:1px dashed #999;
+	line-height:17px;
+/* Again, the ugly brilliant hack. */
+	voice-family: "\"}\"";
+	voice-family:inherit;
+	width:150px;
+	}
+/* Again, "be nice to Opera 5". */
+body>#Menu {width:150px;}
+
+.error {
+	color:#FF0033;
+	font-size:14px;
+	}
+
+
+
+/* INPUT */
+
+input {
+    background: url("img/form-field-bg.gif") repeat-x #FFFFFF;
+    border-color: #CCCCCC #AAAAAA #AAAAAA #CCCCCC;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 100%;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    padding: 3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}
+input[type="text"] {
+width:300px;
+}
+.button, input[type="submit"], .submit {
+    background: url("img/lightgrayup.png") repeat-x scroll left top #d7d7d7;
+    border-color: #DEDEDE #BBBBBB #BBBBBB #DEDEDE;
+    border-style: solid;
+    border-width: 1px;
+    color: #666666;
+    margin: 0;
+    padding: 3px 3px 4px 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+	text-decoration:none;
+}
+.button:hover, input[type="submit"]:hover, .submit:hover {
+    background: url("img/lightgraydown.png") repeat-x scroll left top #d0d0d0;
+	color: #000000;
+}
+.button:active, input[type="submit"]:active, .submit:active {
+    background: url("img/lightgraydown.png") repeat-x scroll left top #d0d0d0;
+}
+
+textarea {
+    background: url("img/form-field-bg.gif") repeat-x #fff;
+    border-color: #DEDEDE #BBBBBB #BBBBBB #DEDEDE;
+    border-style: solid;
+    border-width: 1px;
+    font: 110% Arial,Helvetica,sans-serif;
+    padding: 5px 3px 3px 7px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+	width:300px;
+}
+input:focus {
+    border: 1px solid #999999;
+}
+textarea:focus {
+    border: 1px solid #999999;
+}
+
+.err2 {
+	border: medium solid #EFA405;
+	background: #FFFFCC;
+}
+
+/* تنسيقات صندوق التوجيه */
+.allPost {
+	width: 552px;
+	height: 200px;
+	border: thin ridge #0000FF;
+	margin: 90px auto 0px auto;
+}
+.headPost {
+	height: 30px;
+	width: 550px;
+	background-color: #000099;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.manPost {
+	border: medium outset #999999;
+	background-color: #f3f3fd;
+	color: #000000;
+	width: 530px;
+	height: 150px;
+	margin: 10px auto 0px auto;
+}
