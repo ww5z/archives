@@ -1,83 +1,94 @@
-
 <?php
-require_once ('./includes/header.html');
-require_once ('../includes/session.php');
+//login.php
 
+include('../includes/database_connection.php');
 
-$ip = $_SERVER['REMOTE_ADDR'];// رقم الآي بي
-//
-//////////////////////////////////////////
-require_once('../includes/mysqli_connect.php');
-
-if (isset($_COOKIE['user']['loggedin']) && isset($_COOKIE['user']['id'])) {
-    redirect ('../index.php');
-    //echo $_COOKIE['user']['first_name'];
-    exit();
+if(isset($_SESSION['type']))
+{
+	header("location:../index.php");
 }
-if(isset($_POST['employee_number']) && (is_numeric($_POST['employee_number'])) ) {
-    
-    $number = $_POST['employee_number'];
-    $employee_number = str_pad($number, 7, '0', STR_PAD_LEFT);
-    
-	if (empty($employee_number) || empty($ip) ) {
-		$error = "User Name or Password can't be empty!";
-	} else {
-            //echo "test 2";
-		//إضافة الأصفار في حال عدم كتابتها
-    
-                
-		$q = "SELECT user_id, name, avatar, member, employee_number FROM users WHERE 
-                (ip_adres='$ip' AND employee_number='$employee_number') LIMIT 1"; 
-		$r = @mysqli_query ($dbc, $q);
-		if (mysqli_affected_rows($dbc) == 1)  {
-                    while ($admin = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-				//$admin = mysql_fetch_array($result);
-                setcookie('user[id]',$admin['user_id'], time()+(60*60*24*30),"/");
-                setcookie('user[name]',$admin['name'], time()+(60*60*24*30),"/");
-                setcookie('user[avatar]',$admin['avatar'], time()+(60*60*24*30),"/");
-                setcookie('user[member]',$admin['member'], time()+(60*60*24*30),"/");
-                setcookie('user[loggedin]',true, time()+(60*60*24*30),"/");
-                //$_COOKIE['user']['id'];
-                
-                redirect ('../index.php');
-                
-                    }
-                } else {
-				$error = 'لا يوجد لديك حساب!';
+
+$message = '';
+
+if(isset($_POST["login"]))
+{
+	$query = "
+	SELECT * FROM user 
+		WHERE username = :username
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute(
+		array(
+				'username'	=>	$_POST["username"]
+			)
+	);
+	$count = $statement->rowCount();
+	if($count > 0)
+	{
+		$result = $statement->fetchAll();
+		foreach($result as $row)
+		{
+			if($row['user_status'] == 'Active')
+			{
+				if(password_verify($_POST["user_password"], $row["user_password"]))
+				{
+				
+					$_SESSION['type'] = $row['user_type'];
+					$_SESSION['user_id'] = $row['user_id'];
+					$_SESSION['user_name'] = $row['user_name'];
+					header("location:../index.php");
+				}
+				else
+				{
+					$message = "<label>Wrong Password</label>";
+				}
 			}
-
-		
+			else
+			{
+				$message = "<label>Your account is disabled, Contact Master</label>";
+			}
+		}
 	}
-	
-} else {
-	if (isset($_GET['logout']) && $_GET['logout']== true) {
-		$error = 'تم تسجيل خروجك من النظام، أدخل اسم المستخدم وكلمة المرور للدخول من جديد !';
+	else
+	{
+		$message = "<label>Wrong username </labe>";
 	}
 }
-                
+
 ?>
 
-<div class="container">
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-signin">
-     
-        <p><?php if(isset($error)){echo '<div class="alert alert-danger" role="alert"><strong>خطأ  </strong>'.$error.'</div>';} ?></p>
-        
-        <h2 class="form-signin-heading"> تسجيل الدخول</h2>
-        <label for="inputEmail" class="sr-only">رقم الحاسب</label>
-        <input type="text" name="employee_number" id="inputEmail" class="form-control" placeholder="رقم الحاسب" required="" autofocus="">
- <br /><br />
-        <div class="checkbox">
-          <label>
-<!--            <input type="checkbox" value="remember-me"> -->
-            <a href="register.php">إنشاء حساب</a>
-          </label>
-        </div>
- <br />
-        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Sign in</button>
-        
-    </form>
-    
-  </div>
-<?php
-require_once ('./includes/footer.html');
-?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Inventory Management System using PHP with Ajax Jquery</title>		
+                <script src="../js/jquery-3.2.1.min.js/"></script>
+                <link rel="stylesheet" href="../css/bootstrap.min.css" />
+                <script src="../js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<br />
+		<div class="container">
+			<h2 align="center">Inventory Management System using PHP with Ajax Jquery</h2>
+			<br />
+			<div class="panel panel-default">
+				<div class="panel-heading">Login</div>
+				<div class="panel-body">
+					<form method="post">
+						<?php echo $message; ?>
+						<div class="form-group">
+							<label>User username</label>
+							<input type="text" name="username" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<input type="password" name="user_password" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<input type="submit" name="login" value="Login" class="btn btn-info" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

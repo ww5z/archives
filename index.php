@@ -133,7 +133,7 @@
                 </tr>
                 <tr>
                   <td>1,003</td>
-                  <td>Integer</td>
+                  <td><a href="files_upload_2.php">رفع الملفات - 2</a></td>
                   <td>nec</td>
                   <td>odio</td>
                   <td>Praesent</td>

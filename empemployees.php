@@ -190,21 +190,9 @@ require_once ('header.php');
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="./js/vendor/holder.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
-    <script src="./js/empemployees.js"></script>
-  </body>
-</html>
 
-<script>
-    $( document ).ready( function(){
-        //alert('dd');
-    } );
-</script>
+
+<?php
+$page_title = 'ملفات الموظف'; 
+require_once ('footer.php');
+?>
