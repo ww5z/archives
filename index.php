@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION["type"]))
+{
+	header("location:register/login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +83,7 @@
           <ul class="nav nav-sidebar">
             <li><a href="">Nav item again</a></li>
             <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
+            <li><a href="register/logout.php">تسجيـــل خروج</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -140,14 +148,14 @@
                 </tr>
                 <tr>
                   <td>1,003</td>
-                  <td>libero</td>
+                  <td><a href="user.php">User</a></td>
                   <td>Sed</td>
                   <td>cursus</td>
                   <td>ante</td>
                 </tr>
                 <tr>
                   <td>1,004</td>
-                  <td>dapibus</td>
+                  <td><a href="category.php">category</a></td>
                   <td>diam</td>
                   <td>Sed</td>
                   <td>nisi</td>

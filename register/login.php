@@ -13,7 +13,7 @@ $message = '';
 if(isset($_POST["login"]))
 {
 	$query = "
-	SELECT * FROM user 
+	SELECT * FROM user_details 
 		WHERE username = :username
 	";
 	$statement = $connect->prepare($query);
