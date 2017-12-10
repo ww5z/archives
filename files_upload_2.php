@@ -1,5 +1,5 @@
 <?php
-$page_title = 'ملفات الموظف'; 
+$page_title = 'إضافة ملــف'; 
 require_once ('header.php');
 ?>
 
@@ -23,21 +23,29 @@ require_once ('header.php');
 		<div class="container">
 		<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Add Post</h3>
+			<h3 class="panel-title">إضافة ملف</h3>
 		</div>
 		<div class="panel-body">	
 		  	<form class="form-rtl has-validation-callback" method="post" action="" id="form-add-post" enctype="multipart/form-data">
-					<div class="row form-group">
-						<label for="post_name" class="col-sm-2 control-label">Post Name :</label>
-						<div class="col-sm-10">
-							  <input type="text" class="form-control" id="post_name" name="post_name" placeholder="post-name" >
-						</div>
-				    </div>						
-					<div class="row form-group">
-						<label for="post_title" class="col-sm-2 control-label">Post Title :</label>
-						<div class="col-sm-10">
-							  <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Post Title" >
-						</div>
+                            
+                        <div class="row form-group">
+                                <label for="outgoing_no" class="col-sm-2 control-label">رقم الصادر</label>
+                                <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="outgoing_no" name="outgoing_no" placeholder="رقم الصادر" >
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <label for="date_outgoing_no" class="col-sm-2 control-label">تاريخه</label>
+                                <div class="col-sm-10">
+                                          <input type="text" class="form-control" id="post_name" name="date_outgoing_no" placeholder="تاريخ الصادر" >
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label for="post_title" class="col-sm-2 control-label">الموظف:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Post Title" >
+                            </div>
 				    </div>	
 					<div class="row form-group">
 						<label for="post_content" class="col-sm-2 control-label">Post Content : </label>

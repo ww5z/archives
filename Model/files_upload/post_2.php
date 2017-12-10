@@ -2,14 +2,20 @@
 //var_dump($_POST, $_FILES);
 // if $_post and $files arrays contains data
 include('../../includes/database_connection.php');
+// دوال تحويل الوقت للهجري
+   include('phar://../../includes/ArPHP.phar/Arabic.php');
+    $time = time();
+    $obj = new I18N_Arabic('Date');
+        $timeEnter = $time;
+        $dateEnter = $obj->date('l/ dS-m-Y H:i', $time); //date('Y-m-d', $time)
 
 if ( isset($_POST) && isset($_FILES) )
 {
 	// require upload function
 	include_once('upload_2.php');
 
-	if (isset($_POST['post_name']) 
-		&& isset($_POST['post_title']) 
+	if (isset($_POST['outgoing_no']) 
+		&& isset($_POST['date_outgoing_no']) 
 		&& isset($_POST['post_content']) 
 	) {
 		// IF field item_image contains file.. so execute upload function
@@ -22,10 +28,12 @@ if ( isset($_POST) && isset($_FILES) )
 		//$db = new PDO('mysql:host=localhost;dbname=nc_archives;charset=utf8', 'root', '1122');
 			
 		$sql = 'INSERT INTO  archive_files SET 
-			outgoing_no         = "'.$_POST['post_name'].'", 
-			date_outgoing_no    = "'.$_POST['post_title'].'", 
+			outgoing_no         = "'.$_POST['outgoing_no'].'", 
+			date_outgoing_no    = "'.$_POST['date_outgoing_no'].'", 
 			subject             = "'.$_POST['post_content'].'", 
-			ResolutionLink      = "'.$item_image.'"
+                        ResolutionLink             = "'.$item_image.'",
+                        dateEnter             = "'.$dateEnter.'", 
+			timeEnter      = "'.$timeEnter.'"
 		';			
 		echo $connect->exec($sql); // if result = 1 : post saved
 
