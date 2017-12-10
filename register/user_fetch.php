@@ -16,7 +16,8 @@ WHERE user_type = 'user' AND
 if(isset($_POST["search"]["value"]))
 {
 	$query .= '(user_email LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR user_name LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR username LIKE "%'.$_POST["search"]["value"].'%" ';
+        $query .= 'OR user_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_status LIKE "%'.$_POST["search"]["value"].'%") ';
 }
 
@@ -57,6 +58,7 @@ foreach($result as $row)
 	}
 	$sub_array = array();
 	$sub_array[] = $row['user_id'];
+        $sub_array[] = $row['username'];
 	$sub_array[] = $row['user_email'];
 	$sub_array[] = $row['user_name'];
 	$sub_array[] = $status;

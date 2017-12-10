@@ -5,14 +5,14 @@ include('includes/database_connection.php');
 
 if(!isset($_SESSION["type"]))
 {
-	header('location:login.php');
+	header('location:register/login.php');
 }
 
 if($_SESSION["type"] != 'master')
 {
 	header("location:index.php");
 }
-
+$page_title = 'عرض وتحرير المستخدمين'; 
 include('header.php');
 
 
@@ -39,7 +39,8 @@ include('header.php');
                    				<thead>
 									<tr>
 										<th>ID</th>
-										<th>Email</th>
+										<th>رقم الحاسب</th>
+                                                                                <th>Email</th>
 										<th>Name</th>
 										<th>Status</th>
 										<th>Edit</th>
@@ -62,9 +63,13 @@ include('header.php');
         			</div>
         			<div class="modal-body">
         				<div class="form-group">
-							<label>Enter User Name</label>
-							<input type="text" name="user_name" id="user_name" class="form-control" required />
+							<label>رقم الحاسب</label>
+							<input type="text" name="username" id="username" class="form-control" required />
 						</div>
+                                                <div class="form-group">
+                                                        <label>Enter User Name</label>
+                                                        <input type="text" name="user_name" id="user_name" class="form-control" required />
+                                                </div>
 						<div class="form-group">
 							<label>Enter User Email</label>
 							<input type="email" name="user_email" id="user_email" class="form-control" required />
@@ -148,6 +153,7 @@ $(document).ready(function(){
 			{
 				$('#userModal').modal('show');
 				$('#user_name').val(data.user_name);
+                                $('#username').val(data.username);
 				$('#user_email').val(data.user_email);
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit User");
 				$('#user_id').val(user_id);
