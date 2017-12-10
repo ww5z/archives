@@ -1,7 +1,7 @@
 <?php
 //session_start();
-require_once ('includes/session.php');
-check_login();
+//require_once ('includes/session.php');
+//check_login();
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +20,7 @@ check_login();
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/bootstrap-rtl.min.css" rel="stylesheet">
+    <link href="./css/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="./css/dashboard.css" rel="stylesheet">
