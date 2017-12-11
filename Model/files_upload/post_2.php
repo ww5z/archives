@@ -35,8 +35,18 @@ if ( isset($_POST) && isset($_FILES) )
                         dateEnter             = "'.$dateEnter.'", 
 			timeEnter      = "'.$timeEnter.'"
 		';			
-		echo $connect->exec($sql); // if result = 1 : post saved
-
+		 $connect->exec($sql); // if result = 1 : post saved //$oid = mysqli_insert_id($dbc);
+               //$connect->insert_id;
+                $take_id = $connect->lastInsertId();
+               if ($take_id != 0){
+                   $sq2 = 'INSERT INTO  employees_has_archive_files SET 
+			employees_id_employe         = "'.$_POST['employees_id_employe'].'", 
+			archive_files_id_files             = "'.$take_id.'"
+		';
+                   echo $connect->exec($sq2); 
+               } else {
+                   echo 'حدث خطاء';
+                    }
 	} else {
 		echo 'Some fields are required !';	
 	}

@@ -3,21 +3,7 @@ $page_title = 'إضافة ملــف';
 require_once ('header.php');
 ?>
 
-<body>
 
-	<nav class="navbar navbar-default navbar-fixed-top">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="">Ajax Upload</a>
-	    </div>	
-	  </div>
-	</nav>
 
 	<div class="container-fluid admin-gcontainer">
 		<div class="container">
@@ -42,9 +28,48 @@ require_once ('header.php');
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <label for="post_title" class="col-sm-2 control-label">الموظف:</label>
+                                <label for="employees_id_employe" class="col-sm-2 control-label">الموظف:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Post Title" >
+<!--                                    <input type="text" class="form-control" id="post_title" name="employees_id_employe" placeholder="رقم الحاسب" >-->
+                                            <select id="employees_id_employe" name="employees_id_employe">
+            <option value="0" selected="selected">   </option>
+<?php
+
+############################ أختيار المعني بالمعاملة
+require_once ('includes/mysqli_connect.php');
+
+if(isset($id_p)) {
+	$current_city = $city;
+}elseif (isset($_POST['city'])){
+    $current_city = $_POST['city'];
+} else {
+	$current_city = "";
+}
+
+
+
+$q = "SELECT id_employe, EmployeeName, computer_number FROM employees "; 
+$r = @mysqli_query ($dbc, $q); // Run the query.
+while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
+  
+;
+
+
+	echo '<option value="'.$row['id_employe'].'"';  //  جرب هذه الأضافة
+	if ($current_city == $row['id_employe']) {
+		echo ' selected';
+	}
+	
+	echo '>'.$row['EmployeeName'].'</option>';
+
+
+
+    }
+mysqli_free_result ($r);
+?>               
+
+
+            </select>
                             </div>
 				    </div>	
 					<div class="row form-group">
@@ -81,7 +106,7 @@ require_once ('header.php');
 	<div id="loading"></div>
 	<div id="overlay"></div>
 
-        <script src="js/jquery-3.2.1.min.js"></script>
+
         <script src="js/files_upload_2.js"></script>
 
 
