@@ -17,22 +17,31 @@ require_once ('header.php');
                         <div class="row form-group">
                                 <label for="outgoing_no" class="col-sm-2 control-label">رقم الصادر</label>
                                 <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="outgoing_no" name="outgoing_no" placeholder="رقم الصادر" >
+                                    <input type="number" class="form-control" id="outgoing_no" name="outgoing_no" placeholder="رقم الصادر" required >
                                 </div>
                             </div>
                             
                             <div class="row form-group">
                                 <label for="date_outgoing_no" class="col-sm-2 control-label">تاريخه</label>
                                 <div class="col-sm-10">
-                                          <input type="text" class="form-control" id="post_name" name="date_outgoing_no" placeholder="تاريخ الصادر" >
+<!--                                          <input type="text" class="form-control" id="post_name" name="date_outgoing_no" placeholder="تاريخ الصادر" >-->
+                                    <select class="form-control" id="date_outgoing_no" name="date_outgoing_no" required >
+                                        <option value="1435" >1435</option>
+                                        <option value="1436" >1436</option>
+                                        <option value="1437" >1437</option>
+                                        <option value="1438" >1438</option>
+                                        <option value="1439" selected="selected">1439</option>
+                                        <option value="1438" >1440</option>
+                                    </select>
+                                        
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <label for="employees_id_employe" class="col-sm-2 control-label">الموظف:</label>
                                 <div class="col-sm-10">
 <!--                                    <input type="text" class="form-control" id="post_title" name="employees_id_employe" placeholder="رقم الحاسب" >-->
-                                            <select id="employees_id_employe" name="employees_id_employe">
-            <option value="0" selected="selected">   </option>
+                                            <select class="form-control" id="employees_id_employe" name="employees_id_employe" required >
+            <option value="" selected="selected">   </option>
 <?php
 
 ############################ أختيار المعني بالمعاملة
@@ -82,7 +91,7 @@ mysqli_free_result ($r);
 						<label for="post_image" class="col-sm-2 control-label">Post Image : </label>
 						<div class="col-sm-10">
 							  <img id="post_image_preview" src="img/thumbs/no_thumb.jpg" alt="post Image" />				
-							  <input type="file" onchange="readURL(this);" name="post_image" id="post_image">
+							  <input type="file" onchange="readURL(this);" name="post_image" id="post_image" required >
 						</div>
 				    </div>
 					<div class="row form-group text-center">
