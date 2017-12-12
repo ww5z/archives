@@ -9,16 +9,16 @@ $query = '';
 $output = array();
 
 $query .= "
-SELECT * FROM user_details 
+SELECT * FROM employees 
 WHERE user_type = 'user' AND 
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= '(user_email LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR username LIKE "%'.$_POST["search"]["value"].'%" ';
-        $query .= 'OR user_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR user_status LIKE "%'.$_POST["search"]["value"].'%") ';
+	$query .= '(computer_number LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR card_number LIKE "%'.$_POST["search"]["value"].'%" ';
+        $query .= 'OR EmployeeName LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR job_title LIKE "%'.$_POST["search"]["value"].'%") ';
 }
 
 if(isset($_POST["order"]))
@@ -27,7 +27,7 @@ if(isset($_POST["order"]))
 }
 else
 {
-	$query .= 'ORDER BY user_id DESC ';
+	$query .= 'ORDER BY id_employe DESC ';
 }
 
 if($_POST["length"] != -1)
@@ -57,13 +57,13 @@ foreach($result as $row)
 		$status = '<span class="label label-danger">Inactive</span>';
 	}
 	$sub_array = array();
-	$sub_array[] = $row['user_id'];
-        $sub_array[] = $row['username'];
-	$sub_array[] = $row['user_email'];
-	$sub_array[] = $row['user_name'];
+	$sub_array[] = $row['id_employe'];
+        $sub_array[] = $row['computer_number'];
+	$sub_array[] = $row['EmployeeName'];
+	$sub_array[] = $row['job_title'];
 	$sub_array[] = $status;
-	$sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs update">Update</button>';
-	$sub_array[] = '<button type="button" name="delete" id="'.$row["user_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["user_status"].'">Delete</button>';
+	$sub_array[] = '<button type="button" name="update" id="'.$row["id_employe"].'" class="btn btn-warning btn-xs update">Update</button>';
+	$sub_array[] = '<button type="button" name="delete" id="'.$row["id_employe"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["id_employe"].'">Delete</button>';
 	$data[] = $sub_array;
 }
 
@@ -77,7 +77,7 @@ echo json_encode($output);
 
 function get_total_all_records($connect)
 {
-	$statement = $connect->prepare("SELECT * FROM user_details WHERE user_type='user'");
+	$statement = $connect->prepare("SELECT * FROM employees WHERE user_type='user'");
 	$statement->execute();
 	return $statement->rowCount();
 }

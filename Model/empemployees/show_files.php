@@ -32,11 +32,10 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>التاريخ</th>
+                  <th>رقم الصادر</th>
+                  <th>الموضوع</th>
+                  <th>عرض</th>
                 </tr>
               </thead>
               <tbody>
@@ -46,17 +45,16 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 
 //while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
     while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-        $id_files           =   $row['id_files'];
+        $idate_outgoing_no         =   $row['date_outgoing_no'];
         $outgoing_no        =   $row['outgoing_no'];
-        $date_outgoing_no   =   $row['date_outgoing_no'];
+        //$date_outgoing_no   =   $row['date_outgoing_no'];
         $subject            =   $row['subject'];
-        $file_link          =   $row['file_link'];
+        $ResolutionLink          =  $row["ResolutionLink"];
         echo "<tr>
-                  <td>$id_files</td>
+                  <td>$idate_outgoing_no</td>
                   <td>$outgoing_no</td>
-                  <td>$date_outgoing_no</td>
                   <td>$subject</td>
-                  <td>$file_link</td>
+                  <td><a class='btn btn-default' href='../upload/$ResolutionLink' role='button'>استعراض</a></td>
                 </tr>";
         
     }

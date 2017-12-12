@@ -64,23 +64,39 @@ include('header.php');
         			<div class="modal-body">
         				<div class="form-group">
 							<label>رقم الحاسب</label>
-							<input type="text" name="username" id="username" class="form-control" required />
+							<input type="text" name="computer_number" id="computer_number" class="form-control" required />
 						</div>
                                                 <div class="form-group">
-                                                        <label>Enter User Name</label>
-                                                        <input type="text" name="user_name" id="user_name" class="form-control" required />
+                                                        <label>السجل المدني</label>
+                                                        <input type="text" name="card_number" id="card_numberr" class="form-control" required />
                                                 </div>
 						<div class="form-group">
-							<label>Enter User Email</label>
-							<input type="email" name="user_email" id="user_email" class="form-control" required />
+							<label>اسم الموظف</label>
+                                                        <input type="text" name="EmployeeName" id="EmployeeName" class="form-control" required />
 						</div>
 						<div class="form-group">
-							<label>Enter User Password</label>
-							<input type="password" name="user_password" id="user_password" class="form-control" required />
+							<label>المرتبة</label>
+                                                        <input type="text" name="grade" id="grade" class="form-control"  />
+						</div>
+                                                <div class="form-group">
+							<label>رقم الوظيفة</label>
+                                                        <input type="text" name="job_id" id="job_id" class="form-control"  />
+						</div>
+                                                <div class="form-group">
+							<label>الدرجة</label>
+                                                        <input type="text" name="class" id="class" class="form-control"  />
+						</div>
+                                                <div class="form-group">
+							<label>مسمى الوظيفة</label>
+                                                        <input type="text" name="job_title" id="job_title" class="form-control"  />
+						</div>
+                                                <div class="form-group">
+							<label>الجنسية</label>
+                                                        <input type="text" name="nationality" id="nationality" class="form-control"  />
 						</div>
         			</div>
         			<div class="modal-footer">
-        				<input type="hidden" name="user_id" id="user_id" />
+        				<input type="hidden" name="id_employe" id="id_employe" />
         				<input type="hidden" name="btn_action" id="btn_action" />
         				<input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
         				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,7 +126,7 @@ $(document).ready(function(){
 		"serverSide": true,
 		"order": [],
 		"ajax":{
-			url:"Model/college_staff/user_fetch.php",
+			url:"Model/college_staff/empemployees_fetch.php",
 			type:"POST"
 		},
 		"columnDefs":[
@@ -127,7 +143,7 @@ $(document).ready(function(){
 		$('#action').attr('disabled','disabled');
 		var form_data = $(this).serialize();
 		$.ajax({
-			url:"Model/college_staff/user_action.php",
+			url:"Model/college_staff/empemployees_action.php",
 			method:"POST",
 			data:form_data,
 			success:function(data)
@@ -145,7 +161,7 @@ $(document).ready(function(){
 		var user_id = $(this).attr("id");
 		var btn_action = 'fetch_single';
 		$.ajax({
-			url:"Model/college_staff/user_action.php",
+			url:"Model/college_staff/empemployees_action.php",
 			method:"POST",
 			data:{user_id:user_id, btn_action:btn_action},
 			dataType:"json",
@@ -171,7 +187,7 @@ $(document).ready(function(){
 		if(confirm("Are you sure you want to change status?"))
 		{
 			$.ajax({
-				url:"Model/college_staff/user_action.php",
+				url:"Model/college_staff/empemployees_action.php",
 				method:"POST",
 				data:{user_id:user_id, status:status, btn_action:btn_action},
 				success:function(data)
