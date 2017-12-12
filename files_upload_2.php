@@ -14,28 +14,23 @@ require_once ('header.php');
 		<div class="panel-body">	
 		  	<form class="form-rtl has-validation-callback" method="post" action="" id="form-add-post" enctype="multipart/form-data">
                             
-                        <div class="row form-group">
-                                <label for="outgoing_no" class="col-sm-2 control-label">رقم الصادر</label>
-                                <div class="col-sm-10">
-                                    <input type="number" class="form-control" id="outgoing_no" name="outgoing_no" placeholder="رقم الصادر" required >
-                                </div>
-                            </div>
-                            
-                            <div class="row form-group">
-                                <label for="date_outgoing_no" class="col-sm-2 control-label">تاريخه</label>
-                                <div class="col-sm-10">
-<!--                                          <input type="text" class="form-control" id="post_name" name="date_outgoing_no" placeholder="تاريخ الصادر" >-->
-                                    <select class="form-control" id="date_outgoing_no" name="date_outgoing_no" required >
-                                        <option value="1435" >1435</option>
+                            <div class="form-group">
+                                <label  for="outgoing_no" class="col-sm-2 control-label">رقم الصــادر</label>
+                                <div class="input-group">
+                                    <input type="text" name="outgoing_no" id="product_quantity" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                                    <span class="input-group-addon">
+                                        <select name="date_outgoing_no" id="date_outgoing_no" required>
+                                            <option value="1435" >1435</option>
                                         <option value="1436" >1436</option>
                                         <option value="1437" >1437</option>
                                         <option value="1438" >1438</option>
                                         <option value="1439" selected="selected">1439</option>
                                         <option value="1438" >1440</option>
-                                    </select>
-                                        
+                                        </select>
+                                    </span>
                                 </div>
                             </div>
+                            
                             <div class="row form-group">
                                 <label for="employees_id_employe" class="col-sm-2 control-label">الموظف:</label>
                                 <div class="col-sm-10">
