@@ -54,7 +54,7 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
                   <td>$idate_outgoing_no</td>
                   <td>$outgoing_no</td>
                   <td>$subject</td>
-                  <td><a class='btn btn-default' href='../upload/$ResolutionLink' role='button'>استعراض</a></td>
+                  <td><a class='btn btn-default' target='_blank' href='../upload/$ResolutionLink' role='button'>استعراض</a></td>
                 </tr>";
         
     }

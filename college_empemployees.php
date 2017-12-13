@@ -168,24 +168,31 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '.update', function(){
-		var user_id = $(this).attr("id");
+		var id_employe = $(this).attr("id");
 		var btn_action = 'fetch_single';
 		$.ajax({
 			url:"Model/college_staff/empemployees_action.php",
 			method:"POST",
-			data:{user_id:user_id, btn_action:btn_action},
+			data:{id_employe:id_employe, btn_action:btn_action},
 			dataType:"json",
 			success:function(data)
 			{
 				$('#userModal').modal('show');
-				$('#user_name').val(data.user_name);
-                                $('#username').val(data.username);
-				$('#user_email').val(data.user_email);
+				$('#computer_number').val(data.computer_number);
+                                $('#card_numberr').val(data.card_number);
+				$('#EmployeeName').val(data.EmployeeName);
+                                $('#staff').val(data.staff);
+                                $('#grade').val(data.grade);
+                                $('#job_id').val(data.job_id);
+                                $('#class').val(data.class);
+                                $('#job_title').val(data.job_title);
+                                $('#nationality').val(data.nationality);
+                                
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit User");
-				$('#user_id').val(user_id);
+				$('#id_employe').val(id_employe);
 				$('#action').val('Edit');
 				$('#btn_action').val('Edit');
-				$('#user_password').attr('required', false);
+				//$('#user_password').attr('required', false);
 			}
 		})
 	});

@@ -18,7 +18,7 @@ if(isset($_POST['btn_action']))
 			array(
 				':computer_number'	=>	$_POST["computer_number"],
                                 ':card_number'		=>	$_POST["card_number"],
-				':EmployeeName'         =>	$_POST["card_number"],
+				':EmployeeName'         =>	$_POST["EmployeeName"],
 				':grade'		=>	$_POST["grade"],
                                 ':job_id'		=>	$_POST["job_id"],
                                 ':class'		=>	$_POST["class"],
@@ -50,41 +50,42 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			$output['computer_number'] = $row['computer_number'];
+			$output['id_employe'] = $row['id_employe'];
+                        $output['computer_number'] = $row['computer_number'];
+			$output['card_number'] = $row['card_number'];
                         $output['EmployeeName'] = $row['EmployeeName'];
-			$output['job_title'] = $row['job_title'];
+                        $output['staff'] = $row['staff'];
+                        $output['grade'] = $row['grade'];
+                        $output['job_id'] = $row['job_id'];
+                        $output['class'] = $row['class'];
+                        $output['job_title'] = $row['job_title'];
+                        $output['nationality'] = $row['nationality'];
 		}
 		echo json_encode($output);
 	}
 	if($_POST['btn_action'] == 'Edit')
 	{
-		if($_POST['user_password'] != '')
-		{
-			$query = "
-			UPDATE user_details SET 
-				username = '".$_POST["username"]."', 
-                                user_name = '".$_POST["user_name"]."', 
-				user_email = '".$_POST["user_email"]."',
-				user_password = '".password_hash($_POST["user_password"], PASSWORD_DEFAULT)."' 
-				WHERE user_id = '".$_POST["user_id"]."'
-			";
-		}
-		else
-		{
-			$query = "
-			UPDATE user_details SET 
-				username = '".$_POST["username"]."', 
-                                user_name = '".$_POST["user_name"]."', 
-				user_email = '".$_POST["user_email"]."'
-				WHERE user_id = '".$_POST["user_id"]."'
-			";
-		}
+		
+                    $query = "
+                    UPDATE employees SET 
+                            computer_number = '".$_POST["computer_number"]."', 
+                            card_number = '".$_POST["card_number"]."', 
+                            EmployeeName = '".$_POST["EmployeeName"]."'
+                            staff = '".$_POST["staff"]."'
+                            grade = '".$_POST["grade"]."'
+                            job_id = '".$_POST["job_id"]."'
+                            class = '".$_POST["class"]."'
+                            job_title = '".$_POST["job_title"]."'
+                            nationality = '".$_POST["nationality"]."'
+                            WHERE id_employe = '".$_POST["id_employe"]."'
+                    ";
+
 		$statement = $connect->prepare($query);
 		$statement->execute();
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'User Details Edited';
+			echo 'تم تحديث بيانات الموظف';
 		}
 	}
 	if($_POST['btn_action'] == 'delete')
