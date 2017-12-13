@@ -3,14 +3,15 @@
 //user_action.php
 
 include('../../includes/database_connection.php');
+$timeEnter = time();
 
 if(isset($_POST['btn_action']))
 {
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO employees (computer_number, card_number, EmployeeName, grade, job_id, class, job_title, user_type, user_status) 
-		VALUES (:computer_number, :card_number, :EmployeeName, :grade, :job_id, :class, :job_title, :user_type, :user_status)
+		INSERT INTO employees (computer_number, card_number, EmployeeName, grade, job_id, class, job_title, nationality, staff, user_type, user_status, timeEnter) 
+		VALUES (:computer_number, :card_number, :EmployeeName, :grade, :job_id, :class, :job_title, :nationality, :staff, :user_type, :user_status, :timeEnter)
 		";	
 		$statement = $connect->prepare($query);
 		$statement->execute(
@@ -23,8 +24,10 @@ if(isset($_POST['btn_action']))
                                 ':class'		=>	$_POST["class"],
                                 ':job_title'		=>	$_POST["job_title"],
                                 ':nationality'		=>	$_POST["nationality"],
-				':user_type'		=>	'user',
-				':user_status'		=>	'active'
+                                ':staff'		=>	$_POST["staff"],
+				':user_type'		=>	'member',
+				':user_status'		=>	'active',
+                                ':timeEnter'		=>	$timeEnter
 			)
 		);
 		$result = $statement->fetchAll();

@@ -10,7 +10,7 @@ $output = array();
 
 $query .= "
 SELECT * FROM employees 
-WHERE user_type = 'user' AND 
+WHERE user_type = 'member' AND 
 ";
 
 if(isset($_POST["search"]["value"]))
@@ -27,7 +27,7 @@ if(isset($_POST["order"]))
 }
 else
 {
-	$query .= 'ORDER BY id_employe DESC ';
+	$query .= 'ORDER BY EmployeeName ASC ';
 }
 
 if($_POST["length"] != -1)
@@ -77,7 +77,7 @@ echo json_encode($output);
 
 function get_total_all_records($connect)
 {
-	$statement = $connect->prepare("SELECT * FROM employees WHERE user_type='user'");
+	$statement = $connect->prepare("SELECT * FROM employees WHERE user_type='member'");
 	$statement->execute();
 	return $statement->rowCount();
 }

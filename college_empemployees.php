@@ -74,6 +74,16 @@ include('header.php');
 							<label>اسم الموظف</label>
                                                         <input type="text" name="EmployeeName" id="EmployeeName" class="form-control" required />
 						</div>
+                                                
+                                                <div class="form-group">
+                                                    <label>الكــادر</label>
+                                                    <select class="form-control" id="staff" name="staff" required >
+                                                        <option value="مدرب" selected="selected">مـــدرب</option>
+                                                        <option value="إداري">إداري</option>
+                                                        <option value="صحي">صحـــي</option>
+                                                    </select>
+                                                </div>
+            
 						<div class="form-group">
 							<label>المرتبة</label>
                                                         <input type="text" name="grade" id="grade" class="form-control"  />
