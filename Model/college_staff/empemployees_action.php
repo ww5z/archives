@@ -68,16 +68,16 @@ if(isset($_POST['btn_action']))
 		
                     $query = "
                     UPDATE employees SET 
-                            computer_number = '".$_POST["computer_number"]."', 
+                            computer_number = '".str_pad($_POST["computer_number"], 7, '0', STR_PAD_LEFT)."',
                             card_number = '".$_POST["card_number"]."', 
-                            EmployeeName = '".$_POST["EmployeeName"]."'
-                            staff = '".$_POST["staff"]."'
-                            grade = '".$_POST["grade"]."'
-                            job_id = '".$_POST["job_id"]."'
-                            class = '".$_POST["class"]."'
-                            job_title = '".$_POST["job_title"]."'
+                            EmployeeName = '".$_POST["EmployeeName"]."',
+                            staff = '".$_POST["staff"]."',
+                            grade = '".$_POST["grade"]."',
+                            job_id = '".$_POST["job_id"]."',
+                            class = '".$_POST["class"]."',
+                            job_title = '".$_POST["job_title"]."',
                             nationality = '".$_POST["nationality"]."'
-                            WHERE id_employe = '".$_POST["id_employe"]."'
+                    WHERE id_employe = '".$_POST["id_employe"]."'
                     ";
 
 		$statement = $connect->prepare($query);

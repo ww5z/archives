@@ -69,3 +69,27 @@ $(document).ready(function(){
 			reader.readAsDataURL(input.files[0]);
 		}
     }
+    
+    // ################ دلة كود الواقعة################
+      
+$(function(){
+
+    $( '#c_facts_j' ).click(function (){
+        $( '#c_facts_j' ).val('');
+    });
+    
+    $( '#c_facts_j' ).change( function(){
+        var c_f_j = $("#c_facts_j").val();
+        $( '#employees_id_employe' ).val(c_f_j);
+//        if(c_f_j > 18){
+//            $( '#employees_id_employe' ).val(0);
+//            $( '#c_facts_j' ).val(0);
+//        }
+    });
+    
+    $( '#employees_id_employe' ).change( function(){
+        var fa_j = $("#employees_id_employe").val();
+        $( '#c_facts_j' ).val(fa_j);
+    });
+    
+});

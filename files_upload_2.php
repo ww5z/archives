@@ -31,9 +31,12 @@ require_once ('header.php');
                                 </div>
                             </div>
                             
-                            <div class="row form-group">
+                            <div class="form-group">
                                 <label for="employees_id_employe" class="col-sm-2 control-label">الموظف:</label>
-                                <div class="col-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <input type="text" name="c_facts_j" id="c_facts_j" style="width: 30px;text-align: center;" value="0" />
+                                    </span>
 <!--                                    <input type="text" class="form-control" id="post_title" name="employees_id_employe" placeholder="رقم الحاسب" >-->
                                             <select class="form-control" id="employees_id_employe" name="employees_id_employe" required >
             <option value="" selected="selected">   </option>

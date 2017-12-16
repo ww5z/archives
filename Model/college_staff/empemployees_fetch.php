@@ -27,7 +27,7 @@ if(isset($_POST["order"]))
 }
 else
 {
-	$query .= 'ORDER BY EmployeeName ASC ';
+	$query .= 'ORDER BY id_employe ASC ';
 }
 
 if($_POST["length"] != -1)
