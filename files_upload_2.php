@@ -30,6 +30,23 @@ require_once ('header.php');
                                     </span>
                                 </div>
                             </div>
+
+				
+							<div class="row form-group">
+								<label for="file_type" class="col-sm-2 control-label">نوع الملف</label>
+								<div class="col-sm-10">
+									<select class="form-control" name="file_type" id="file_type" required>
+                                        	<option value="" selected="selected">    </option>
+											<option value="1" >التعيين والترقيات</option>
+											<option value="2" >التكليف والإنتدابات</option>
+											<option value="3" >التدريب والإبتعاث</option>
+											<option value="4" >الإجازات</option>
+											<option value="5" >الحسميات والجزائأت</option>
+											<option value="6" >عـــــام</option>
+                                        </select>
+								</div>
+							</div>
+				
                             
                             <div class="form-group">
                                 <label for="employees_id_employe" class="col-sm-2 control-label">الموظف:</label>

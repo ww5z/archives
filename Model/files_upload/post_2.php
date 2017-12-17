@@ -30,6 +30,7 @@ if ( isset($_POST) && isset($_FILES) )
 		$sql = 'INSERT INTO  archive_files SET 
 			outgoing_no         = "'.$_POST['outgoing_no'].'", 
 			date_outgoing_no    = "'.$_POST['date_outgoing_no'].'", 
+			file_type    = "'.$_POST['file_type'].'", 
 			subject             = "'.$_POST['post_content'].'", 
                         ResolutionLink             = "'.$item_image.'",
                         dateEnter             = "'.$dateEnter.'", 
