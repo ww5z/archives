@@ -101,9 +101,9 @@ function take_form(nocm, post_1){
             }
             else {
                 var person = jQuery.parseJSON( data );
-                var id = person.computer_number ;
+                var id = person.id_employe ;
                 if(id > 0){
-                    $( '#NoComputer' ).val(person.computer_number); //رقم الحاسب
+                    $( '#NoComputer' ).val(person.id_employe); //رقم الحاسب
                     $( '#card_number' ).val(person.card_number); //رقم البطاقة
                     $( '#incumbent' ).text(person.EmployeeName); //اسم الموظف
                     $( '#grade' ).text(person.grade); //المرتبة
@@ -239,7 +239,7 @@ function form_edit_employees(id_emloyees){
                     $("#insert_messg").hide();
                     
                     $( '#form_id_employees' ).val(person.id);
-                    $( '#form_NoComputer' ).val(person.employee_number); //رقم الحاسب
+                    $( '#form_NoComputer' ).val(person.id_employe); //رقم الحاسب
                     $( '#form_card_number' ).val(person.card_number); //رقم البطاقة
                     $( '#form_incumbent' ).val(person.employee_name); //اسم الموظف
                     $( '#form_grade' ).val(person.grade); //المرتبة

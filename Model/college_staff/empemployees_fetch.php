@@ -15,7 +15,7 @@ WHERE user_type = 'member' AND
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= '(computer_number LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= '(id_employe LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR card_number LIKE "%'.$_POST["search"]["value"].'%" ';
         $query .= 'OR EmployeeName LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR job_title LIKE "%'.$_POST["search"]["value"].'%") ';
@@ -27,7 +27,7 @@ if(isset($_POST["order"]))
 }
 else
 {
-	$query .= 'ORDER BY id_employe ASC ';
+	$query .= 'ORDER BY EmployeeName ASC ';
 }
 
 if($_POST["length"] != -1)
@@ -58,10 +58,11 @@ foreach($result as $row)
 	}
 	$sub_array = array();
 	$sub_array[] = $row['id_employe'];
-        $sub_array[] = $row['computer_number'];
+        //$sub_array[] = $row['computer_number'];
 	$sub_array[] = $row['EmployeeName'];
 	$sub_array[] = $row['job_title'];
-	$sub_array[] = $status;
+	$sub_array[] = $row['job_id']; 
+	$sub_array[] = $row['staff'];
 	$sub_array[] = '<button type="button" name="update" id="'.$row["id_employe"].'" class="btn btn-warning btn-xs update">Update</button>';
 	$sub_array[] = '<button type="button" name="delete" id="'.$row["id_employe"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["id_employe"].'">Delete</button>';
 	$data[] = $sub_array;

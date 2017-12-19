@@ -39,11 +39,11 @@ include('header.php');
                    				<thead>
 									<tr>
 										<th>ID</th>
-										<th>رقم الحاسب</th>
-                                                                                <th>Email</th>
-										<th>Name</th>
-										<th>Status</th>
-										<th>Edit</th>
+										<th>اسم الموظف</th>
+										<th>السجل المدني</th>
+										<th>الوظيفة</th>
+										<th>الكادر</th>
+										<th>تحديث</th>
 										<th>Delete</th>
 									</tr>
 								</thead>

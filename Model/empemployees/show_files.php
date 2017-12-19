@@ -45,11 +45,11 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 
 //while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
     while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-        $idate_outgoing_no         =   $row['date_outgoing_no'];
+        $idate_outgoing_no  =   $row['date_outgoing_no'];
         $outgoing_no        =   $row['outgoing_no'];
         //$date_outgoing_no   =   $row['date_outgoing_no'];
         $subject            =   $row['subject'];
-        $ResolutionLink          =  $row["ResolutionLink"];
+        $ResolutionLink     =  $row["ResolutionLink"];
         echo "<tr>
                   <td>$idate_outgoing_no</td>
                   <td>$outgoing_no</td>

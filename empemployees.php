@@ -2,6 +2,7 @@
 $page_title = 'ملفات الموظف'; 
 require_once ('header.php');
 ?>
+<script type="text/javascript" src="js/empemployees.js"></script>
 
 
 

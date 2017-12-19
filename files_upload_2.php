@@ -52,7 +52,7 @@ require_once ('header.php');
                                 <label for="employees_id_employe" class="col-sm-2 control-label">الموظف:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">
-                                        <input type="text" name="c_facts_j" id="c_facts_j" style="width: 30px;text-align: center;" value="0" />
+                                        <input type="text" name="c_facts_j" id="c_facts_j" style="width: 60px;text-align: center;" value="0" />
                                     </span>
 <!--                                    <input type="text" class="form-control" id="post_title" name="employees_id_employe" placeholder="رقم الحاسب" >-->
                                             <select class="form-control" id="employees_id_employe" name="employees_id_employe" required >
@@ -72,7 +72,7 @@ if(isset($id_p)) {
 
 
 
-$q = "SELECT id_employe, EmployeeName, computer_number FROM employees "; 
+$q = "SELECT id_employe, EmployeeName FROM employees ORDER BY EmployeeName ASC "; 
 $r = @mysqli_query ($dbc, $q); // Run the query.
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
   

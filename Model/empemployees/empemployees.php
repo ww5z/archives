@@ -13,7 +13,7 @@ if ( (isset($_POST['no_computer'])) && (is_numeric($_POST['no_computer'])) ) {
      $NoComputer = str_pad($number, 7, '0', STR_PAD_LEFT);
      
 
-$query = "SELECT * FROM employees WHERE computer_number = '$NoComputer' LIMIT 1 ";
+$query = "SELECT * FROM employees WHERE id_employe = '$NoComputer' LIMIT 1 ";
             if ($result = mysqli_query($dbc, $query)) {
                 $out = array();
                 while ($row = $result->fetch_assoc()) {

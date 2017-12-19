@@ -10,13 +10,13 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO employees (computer_number, card_number, EmployeeName, grade, job_id, class, job_title, nationality, staff, user_type, user_status, timeEnter) 
-		VALUES (:computer_number, :card_number, :EmployeeName, :grade, :job_id, :class, :job_title, :nationality, :staff, :user_type, :user_status, :timeEnter)
+		INSERT INTO employees (id_employe, card_number, EmployeeName, grade, job_id, class, job_title, nationality, staff, user_type, user_status, timeEnter) 
+		VALUES (:id_employe, :card_number, :EmployeeName, :grade, :job_id, :class, :job_title, :nationality, :staff, :user_type, :user_status, :timeEnter)
 		";	
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':computer_number'	=>	$_POST["computer_number"],
+				':id_employe'	=>	$_POST["computer_number"],
                                 ':card_number'		=>	$_POST["card_number"],
 				':EmployeeName'         =>	$_POST["EmployeeName"],
 				':grade'		=>	$_POST["grade"],
@@ -51,7 +51,7 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$output['id_employe'] = $row['id_employe'];
-                        $output['computer_number'] = $row['computer_number'];
+                        $output['computer_number'] = $row['id_employe']; //رقم الحاسب
 			$output['card_number'] = $row['card_number'];
                         $output['EmployeeName'] = $row['EmployeeName'];
                         $output['staff'] = $row['staff'];
@@ -68,7 +68,7 @@ if(isset($_POST['btn_action']))
 		
                     $query = "
                     UPDATE employees SET 
-                            computer_number = '".str_pad($_POST["computer_number"], 7, '0', STR_PAD_LEFT)."',
+                            id_employe = '".str_pad($_POST["computer_number"], 7, '0', STR_PAD_LEFT)."',
                             card_number = '".$_POST["card_number"]."', 
                             EmployeeName = '".$_POST["EmployeeName"]."',
                             staff = '".$_POST["staff"]."',
