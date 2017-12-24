@@ -1,12 +1,9 @@
 <?php
 //profile.php
+include('header.php');
 
-include('includes/database_connection.php');
 
-if(!isset($_SESSION['type']))
-{
-	header("location:login.php");
-}
+
 
 $query = "
 SELECT * FROM user_details 
@@ -24,7 +21,7 @@ foreach($result as $row)
 	$email = $row['user_email'];
 }
 
-include('header.php');
+
 
 ?>
 		<div class="panel panel-default">
