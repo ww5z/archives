@@ -24,7 +24,7 @@ include('header.php');
                     <div class="panel-heading">
                     	<div class="row">
                         	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                            	<h3 class="panel-title">User List</h3>
+                            	<h3 class="panel-title">قائمة الموظفين</h3>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align="right">
                             	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">Add</button>
@@ -177,7 +177,7 @@ $(document).ready(function(){
 			dataType:"json",
 			success:function(data)
 			{
-				$('#userModal').modal('show');
+				$('#messagemessage').modal('show');
 				$('#computer_number').val(data.computer_number);
                                 $('#card_numberr').val(data.card_number);
 				$('#EmployeeName').val(data.EmployeeName);

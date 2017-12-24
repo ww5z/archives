@@ -13,13 +13,13 @@ $message = '';
 if(isset($_POST["login"]))
 {
 	$query = "
-	SELECT * FROM user_details 
-		WHERE username = :username
+	SELECT * FROM employees 
+		WHERE id_employe = :id_employe
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute(
 		array(
-				'username'	=>	$_POST["username"]
+				'id_employe'	=>	$_POST["id_employe"]
 			)
 	);
 	$count = $statement->rowCount();
@@ -34,8 +34,8 @@ if(isset($_POST["login"]))
 				{
 				
 					$_SESSION['type'] = $row['user_type'];
-					$_SESSION['user_id'] = $row['user_id'];
-					$_SESSION['user_name'] = $row['user_name'];
+					$_SESSION['id_employe'] = $row['id_employe'];
+					$_SESSION['EmployeeName'] = $row['EmployeeName'];
 					header("location:../index.php");
 				}
 				else
@@ -60,27 +60,34 @@ if(isset($_POST["login"]))
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Inventory Management System using PHP with Ajax Jquery</title>		
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>نظام الموظفين - تسجيل الدخول</title>		
+		<!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap-rtl.min.css" rel="stylesheet">
+    <link href="../css/dataTables.bootstrap.min.css" rel="stylesheet">
+		
                 <script src="../js/jquery-3.2.1.min.js/"></script>
-                <link rel="stylesheet" href="../css/bootstrap.min.css" />
                 <script src="../js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<br />
 		<div class="container">
-			<h2 align="center">Inventory Management System using PHP with Ajax Jquery</h2>
+			<h2 align="center">نظام الموظفين</h2>
 			<br />
 			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
+				<div class="panel-heading">تسجيل الدخول</div>
 				<div class="panel-body">
 					<form method="post">
 						<?php echo $message; ?>
 						<div class="form-group">
-							<label>User username</label>
-							<input type="text" name="username" class="form-control" required />
+							<label>رقم الحاسب</label>
+							<input type="text" name="id_employe" class="form-control" required />
 						</div>
 						<div class="form-group">
-							<label>Password</label>
+							<label>كلمة المرور</label>
 							<input type="password" name="user_password" class="form-control" required />
 						</div>
 						<div class="form-group">

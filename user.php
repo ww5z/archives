@@ -1,17 +1,6 @@
 <?php
 //user.php
 
-include('includes/database_connection.php');
-
-if(!isset($_SESSION["type"]))
-{
-	header('location:register/login.php');
-}
-
-if($_SESSION["type"] != 'master')
-{
-	header("location:index.php");
-}
 $page_title = 'عرض وتحرير المستخدمين'; 
 include('header.php');
 

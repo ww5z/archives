@@ -64,13 +64,14 @@ if(!isset($_SESSION["type"]))
 					if($_SESSION['type'] == 'master')
 					{
 					?>
-						<li><a href="user.php">User</a></li>
-						<li><a href="category.php">Category</a></li>
+						<li><a href="user.php">المستخدمين</a></li>
+						
 						<li><a href="brand.php">Brand</a></li>
 						<li><a href="product.php">Product</a></li>
 					<?php
 					}
 					?>
+						<li><a href="college_empemployees.php">الموظفين</a></li>
 						<li><a href="order.php">Order</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right flip">
