@@ -55,45 +55,31 @@ require_once ('header.php');
                                         <input type="text" name="c_facts_j" id="c_facts_j" style="width: 60px;text-align: center;" value="0" />
                                     </span>
 <!--                                    <input type="text" class="form-control" id="post_title" name="employees_id_employe" placeholder="رقم الحاسب" >-->
-                                            <select class="form-control" id="employees_id_employe" name="employees_id_employe" required >
-            <option value="" selected="selected">   </option>
+                                           
 <?php
 
 ############################ أختيار المعني بالمعاملة
-require_once ('includes/mysqli_connect.php');
 
-if(isset($id_p)) {
-	$current_city = $city;
-}elseif (isset($_POST['city'])){
-    $current_city = $_POST['city'];
-} else {
-	$current_city = "";
+// ///////////$connect = new PDO("mysql:host=localhost;dbname=testing4", "root", "1bn5n52");
+function fill_unit_select_box($connect)
+{ 
+ $output = '';
+ $query = "SELECT id_employe, EmployeeName FROM employees ORDER BY EmployeeName ASC";
+ $statement = $connect->prepare($query);
+ $statement->execute();
+ $result = $statement->fetchAll();
+ foreach($result as $row)
+ {
+  $output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'</option>';
+ }
+ return $output;
 }
 
 
-
-$q = "SELECT id_employe, EmployeeName FROM employees ORDER BY EmployeeName ASC "; 
-$r = @mysqli_query ($dbc, $q); // Run the query.
-while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
-  
-;
-
-
-	echo '<option value="'.$row['id_employe'].'"';  //  جرب هذه الأضافة
-	if ($current_city == $row['id_employe']) {
-		echo ' selected';
-	}
-	
-	echo '>'.$row['EmployeeName'].'</option>';
-
-
-
-    }
-mysqli_free_result ($r);
 ?>               
 
+<select name="employees_id_employe" id="employees_id_employe" class="form-control item_unit"><option value="">Select Unit</option><?php echo fill_unit_select_box($connect); ?></select>
 
-            </select>
                             </div>
 				    </div>	
 					<div class="row form-group">
@@ -111,7 +97,7 @@ mysqli_free_result ($r);
 				    </div>
 					<div class="row form-group text-center">
 						<div class="col-sm-10 cmd_btn">
-							<button id="btn-save-post" type="submit" class="btn btn-primary">Save</button>
+							<button id="btn-save-post" type="submit" class="btn btn-primary">حفــــظ</button>
 						</div>
 					</div>
 		    </form>

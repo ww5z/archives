@@ -13,6 +13,9 @@ include('header.php');
 <a href="files_upload_2.php" class="btn btn-primary btn-lg btn-block" role="button">رفع الملفات</a>
 <a href="PersonalData.php" class="btn btn-primary btn-lg btn-block" role="button">البيانات الشخصية</a>
 <a href="job_data.php" class="btn btn-primary btn-lg btn-block" role="button">بيانات الوظيفة</a>
+<hr />
+<a href="job_description.php" class="btn btn-success btn-lg btn-block" role="button">الوصف الوظيفي</a>
+<a href="#" class="btn btn-success btn-lg btn-block" role="button">التشكيل الإداري</a>
 
 
 
