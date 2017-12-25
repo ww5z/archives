@@ -1,0 +1,38 @@
+@charset "UTF-8";
+header {
+	padding-top: 10px;
+	padding-left: 19px;
+	padding-right: 19px;
+	padding-bottom: 10px;
+}
+.container {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+nav {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+main {
+	min-height: 800px;
+}
+
+
+/*عرض للتابلت*/
+@media (min-width: 401px) and (max-width: 768px){
+}
+
+
+/*عرض للجوال*/
+@media (max-width: 400px){
+	header a img {
+		width: 83%;
+		height: 83%;
+	}
+	
+}
+

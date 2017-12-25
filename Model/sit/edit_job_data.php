@@ -4,11 +4,11 @@
 
 include('../../includes/database_connection.php');
 
-if(isset($_POST['place_birth']))
+if(isset($_POST['Staff']))
 {
 	
 		$query = "
-		UPDATE PersonalData SET 
+		UPDATE job_data SET 
 			Staff = '".$_POST["Staff"]."', 
 			Ranked = '".$_POST["Ranked"]."',  
 			Job_number = '".$_POST["Job_number"]."', 
@@ -22,7 +22,7 @@ if(isset($_POST['place_birth']))
 			First_direct_date = '".$_POST["First_direct_date"]."', 
 			Date_commencement_college = '".$_POST["Date_commencement_college"]."', 
 			status_update_copy1 = 'Active'
-			WHERE id_job_data = '".$_SESSION["id_job_data"]."'
+			WHERE id_job_data = '".$_SESSION["id_employe"]."'
 		";
 	
 	$statement = $connect->prepare($query);

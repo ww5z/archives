@@ -50,7 +50,7 @@ foreach($result as $row)
 	<br />
 
 		<div class="panel panel-default">
-			<div class="panel-heading">Edit Profile</div>
+			<div class="panel-heading">تحرير بيانات الوظيفة</div>
 			<div class="panel-body">
 				<form method="post" id="edit_profile_form">
 					<span id="message"></span>
@@ -61,7 +61,6 @@ foreach($result as $row)
 					<div class="form-group">
 						<label>المرتبة</label>
 						<input type="text" name="Ranked" id="Ranked" class="form-control" value="<?php echo $Ranked; ?>" />
-					</div>
 					</div>
 					<div class="form-group">
 						<label>رقم الوظيفة</label>
@@ -131,8 +130,8 @@ $(document).ready(function(){
 			success:function(data)
 			{
 				$('#edit_prfile').attr('disabled', false);
-				$('#user_new_password').val('');
-				$('#user_re_enter_password').val('');
+				//$('#user_new_password').val('');
+				//$('#user_re_enter_password').val('');
 				$('#message').html(data);
 			}
 		})
