@@ -133,6 +133,5 @@ require_once ('header.php');
 
 
 <?php
-$page_title = 'ملفات الموظف'; 
 require_once ('footer.php');
 ?>

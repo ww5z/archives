@@ -46,6 +46,7 @@ foreach($result as $row)
 			<div class="panel-body">
 				<form method="post" id="edit_profile_form">
 					<span id="message"></span>
+					
 					<div class="form-group">
 						<label>مكان الميلاد</label>
 						<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $place_birth; ?>" required />

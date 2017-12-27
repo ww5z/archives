@@ -9,6 +9,7 @@ include('header.php');
 
 
 <a href="empemployees.php" class="btn btn-primary btn-lg btn-block" role="button">استعراض ملفات الموظف</a>
+<a href="college_empemployees.php" class="btn btn-primary btn-lg btn-block" role="button">استعراض الموظفين</a>
 <a href="files_upload.php" class="btn btn-primary btn-lg btn-block" role="button">رفـــــــــع </a>
 <a href="files_upload_2.php" class="btn btn-primary btn-lg btn-block" role="button">رفع الملفات</a>
 <a href="PersonalData.php" class="btn btn-primary btn-lg btn-block" role="button">البيانات الشخصية</a>

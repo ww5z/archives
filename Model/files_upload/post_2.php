@@ -30,10 +30,12 @@ if ( isset($_POST) && isset($_FILES) )
 		$sql = 'INSERT INTO  archive_files SET 
 			outgoing_no         = "'.$_POST['outgoing_no'].'", 
 			date_outgoing_no    = "'.$_POST['date_outgoing_no'].'", 
-			file_type    = "'.$_POST['file_type'].'", 
+			file_type    		= "'.$_POST['file_type'].'", 
 			subject             = "'.$_POST['post_content'].'", 
-                        ResolutionLink             = "'.$item_image.'",
-                        dateEnter             = "'.$dateEnter.'", 
+			degree_confidentiality        = "'.$_POST['degree_confidentiality'].'", 
+			essayist_employees        = "'.$_POST['essayist_employees'].'", 
+			ResolutionLink      = "'.$item_image.'",
+			dateEnter             = "'.$dateEnter.'", 
 			timeEnter      = "'.$timeEnter.'"
 		';			
 		 $connect->exec($sql); // if result = 1 : post saved //$oid = mysqli_insert_id($dbc);

@@ -70,7 +70,7 @@ if ( (isset($_POST['id_employees'])) && (is_numeric($_POST['id_employees'])) ) {
      $id_employees = $_POST['id_employees'];
 
     /** ### لإستخراج البيانات إلى الجكويري ## */
-    $query = "SELECT * FROM employees WHERE id=$id_employees  LIMIT 1";
+    $query = "SELECT * FROM employees WHERE id_employe=$id_employees  LIMIT 1";
     if ($result = mysqli_query($dbc, $query)) {
        $out = array();
        while ($row = $result->fetch_assoc()) {
