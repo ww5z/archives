@@ -1,19 +1,12 @@
 <?php
 //user.php
 
-include('includes/database_connection.php');
-
-if(!isset($_SESSION["type"]))
-{
-	header('location:register/login.php');
-}
-
-if($_SESSION["type"] != 'master')
+$page_title = 'موظفين الكلية'; 
+include('header.php');
+if($_SESSION["type"] != 'master' && $_SESSION["type"] != 'user')
 {
 	header("location:index.php");
 }
-$page_title = 'موظفين الكلية'; 
-include('header.php');
 
 
 ?>
