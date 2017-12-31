@@ -15,13 +15,14 @@ function fill_unit_select_box($connect)
  $result = $statement->fetchAll();
  foreach($result as $row)
  {
-  $output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'</option>';
+  $output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'('.$row["id_employe"].')</option>';
  }
  return $output;
 }
 
 ?>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
 	<br />
 
 		<div class="panel panel-default">
@@ -77,7 +78,7 @@ function fill_unit_select_box($connect)
 					<span class="input-group-addon">
 					<input type="text" name="c_facts_j" id="c_facts_j" style="width: 60px;text-align: center;" value="0" disabled="disabled" />
 					</span>
-						<select name="employees_id_employe" id="employees_id_employe" class="form-control item_unit" >
+						<select name="employees_id_employe[]" id="employees_id_employe" class="form-control selectpicker" data-live-search="true" multiple >
 							<option value="">اختر موظـــف</option><?php echo fill_unit_select_box($connect); ?>
 						</select>
 					</div>
@@ -138,6 +139,7 @@ $(document).ready(function(){
 		$("#c_facts_j").prop('disabled', false);
 		$("#employees_id_employe").prop('disabled', false);
 	} else {
+		$("#employees_id_employe").prop('multiple', false);
 		$( '#c_facts_j' ).val(employeesSelect);
 		$( '#employees_id_employe' ).val(employeesSelect);
 		//$("#employees_id_employe").prop('disabled', 'disabled');
