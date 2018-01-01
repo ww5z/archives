@@ -53,58 +53,8 @@ require_once ('header.php');
         <h4 class="modal-title" id="exampleModalLabel">تعديل البيانات</h4>
       </div>
 
-<div class="modal-body">
-        <div id="insert_messg"></div>
-    <form class="form-inline" id="form_edit_employees">
-	
-            <div class="list-group listt_grouPP">
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">رقم الحاسب:</label>
-                            <input type="text" class="form-control" name="form_NoComputer" id="form_NoComputer" size="20">
-                    </div>
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">رقم البطاقة:</label>
-                            <input type="text" class="form-control" name="form_card_number" id="form_card_number" size="20">
-                    </div>
-            </div>
 
-            <div class="list-group">
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">اسم الموظف:</label>
-                            <input type="text" class="form-control" name="form_incumbent" id="form_incumbent">
-                    </div>
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">جهة الموظف:</label>
-                            <input type="text" class="form-control" name="form_description_hand_employee" id="form_description_hand_employee">
-                    </div>
-            </div>
-
-            <div class="list-group">
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">المرتبة:</label>
-                            <input type="text" class="form-control" name="form_grade" id="form_grade">
-                    </div>
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">رقم الوظيفة:</label>
-                            <input type="text" class="form-control"  name="form_idJob" id="form_idJob">
-                    </div>
-            </div>
-
-            <div class="list-group">
-                    <div class="form-group">
-                            <label for="recipient-name" class="control-label">مسمى الوظيفة:</label>
-                            <input type="text" class="form-control" name="form_JobTitle" id="form_JobTitle">
-                    </div>
-                    <div class="form-group">
-                            <label for="message-text" class="control-label">ملاحظـــات:</label>
-                            <textarea class="form-control" name="form_notes" id="form_notes"></textarea>
-                    </div>
-            </div>
-        
-        <input type="hidden" name="form_id_employees_hid" id="form_id_employees_hid" value="" />
-
-    </form>
-</div>
+		
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" id="form_id_employees">حفــظ التعديـلات</button>
@@ -116,11 +66,8 @@ require_once ('header.php');
           
           
           
-          
-          
-          
 
-          <h2 class="sub-header">عرض الملفات</h2>
+  
           
           <div id="procedure"></div>
           

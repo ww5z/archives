@@ -28,8 +28,20 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 
 ?>
 
-<div class="table-responsive">
-            <table class="table table-striped">
+<div class="col-lg-12">
+				<div class="panel panel-default">
+                    <div class="panel-heading">
+                    	<div class="row">
+                        	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                            	<h3 class="panel-title">قائمة الملفـــات</h3>
+                            </div>
+                        </div>
+                       
+                        <div class="clear:both"></div>
+                   	</div>
+                   	<div class="panel-body">
+                   		<div class="row"><div class="col-sm-12 table-responsive">
+                   			<table id="user_data" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>التاريخ</th>
@@ -78,4 +90,8 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
                   
               </tbody>
             </table>
-          </div>
+                  		</div>
+                   	</div>
+               	</div>
+           	</div>
+        </div>

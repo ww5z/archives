@@ -172,15 +172,15 @@ $(document).ready(function(){
 			{
 				$('#messagemessage').modal('show');
 				$('#computer_number').val(data.computer_number);
-                                $('#card_numberr').val(data.card_number);
+				$('#card_numberr').val(data.card_number);
 				$('#EmployeeName').val(data.EmployeeName);
-                                $('#staff').val(data.staff);
-                                $('#grade').val(data.grade);
-                                $('#job_id').val(data.job_id);
-                                $('#class').val(data.class);
-                                $('#job_title').val(data.job_title);
-                                $('#nationality').val(data.nationality);
-                                
+				$('#staff').val(data.staff);
+				$('#grade').val(data.grade);
+				$('#job_id').val(data.job_id);
+				$('#class').val(data.class);
+				$('#job_title').val(data.job_title);
+				$('#nationality').val(data.nationality);
+
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit User");
 				$('#id_employe').val(id_employe);
 				$('#action').val('Edit');
