@@ -3,21 +3,39 @@
 
 include('header.php');
 
+//SELECT * FROM `system_validity`,`system_validity_has_employees`  WHERE `enquiry` = 1
+//SELECT * FROM `system_validity`,`system_validity_has_employees`  WHERE `enquiry` = 1
+
+
+function fill_unit_select_box($connect)
+{ 
+	$id_employe = $_SESSION["id_employe"];
+ $output = '';
+ $query = "
+SELECT * FROM `employees`, `system_validity`, `system_validity_groups`  WHERE employees.id_employe = '$id_employe' AND employees.id_employe = system_validity_groups.employees_id AND system_validity_groups.system_validity_id = system_validity.id_idsystem_validity
+";
+$statement = $connect->prepare($query);
+ $statement->execute();
+ $result = $statement->fetchAll();
+ foreach($result as $row)
+ {
+  $output .= '<a href="'.$row["validitycol"].'"class="btn btn-lg btn-block '.$row["style_class"].'" role="button">'.$row["ButtonName"].'</a>';
+ }
+ return $output;
+}
+
+
 ?>
 	<br />
 
 
+<?php echo fill_unit_select_box($connect); ?>
 
-<a href="empemployees.php" class="btn btn-primary btn-lg btn-block" role="button">استعراض ملفات الموظف</a>
-<a href="college_empemployees.php" class="btn btn-primary btn-lg btn-block" role="button">استعراض الموظفين</a>
-<a href="files_upload.php" class="btn btn-primary btn-lg btn-block" role="button">رفـــــــــع </a>
-<a href="files_upload_2.php" class="btn btn-primary btn-lg btn-block" role="button">رفع الملفات</a>
-<a href="PersonalData.php" class="btn btn-primary btn-lg btn-block" role="button">البيانات الشخصية</a>
-<a href="job_data.php" class="btn btn-primary btn-lg btn-block" role="button">بيانات الوظيفة</a>
-<hr />
+
+<!--<hr />
 <a href="job_description.php" class="btn btn-success btn-lg btn-block" role="button">الوصف الوظيفي</a>
 <a href="#" class="btn btn-success btn-lg btn-block" role="button">التشكيل الإداري</a>
-
+-->
 
 
 
