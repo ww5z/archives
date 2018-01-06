@@ -2,37 +2,53 @@
 //index.php
 include('header.php');
 
+	if(isset($_GET["add"]))
+	{
+
+	}
+	elseif(isset($_GET["update"]) && isset($_GET["id"]))
+	{
+
+	}
+
 
 $query = "
-SELECT * FROM PersonalData 
-WHERE id_PersonalData = '".$_SESSION["id_employe"]."'
+SELECT * FROM job_description_card 
+WHERE employees_id = '".$_SESSION["id_employe"]."'
 ";
 $statement = $connect->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
-$place_birth = '';
-$email = '';
-$Nationality = '';
-$card_number = '';
-$date_card = '';
-$Issuing_card = '';
-$Passport_number = '';
-$date_passport = '';
-$expiry_passport = '';
-$Issuing_passport = '';
+
+$id_idjob_description_card = '';
+$grade = '';
+$job_id = '';
+$job_title = '';
+$OrganizationalLinkage = '';
+$Duties_tasks = '';
+$Powers = '';
+$Qualification = '';
+$Practical_experience = '';
+$Training = '';
+$Other = '';
+$employees_id = '';
+
 
 foreach($result as $row)
 {
-	$place_birth = $row['place_birth'];
-	$Date_Birth = $row['Date_Birth'];
-	$Nationality = $row['Nationality'];
-	$card_number = $row['card_number'];
-	$date_card = $row['date_card'];
-	$Issuing_card = $row['Issuing_card'];
-	$Passport_number = $row['Passport_number'];
-	$date_passport = $row['date_passport'];
-	$expiry_passport = $row['expiry_passport'];
-	$Issuing_passport = $row['Issuing_passport'];
+	$id_idjob_description_card = $row['id_idjob_description_card'];
+	$grade = $row['grade'];
+	$job_id = $row['job_id'];
+	$job_title = $row['job_title'];
+	$OrganizationalLinkage = $row['OrganizationalLinkage'];
+	$Duties_tasks = $row['Duties_tasks'];
+	$Powers = $row['Powers'];
+	$Qualification = $row['Qualification'];
+	$Practical_experience = $row['Practical_experience'];
+	$Training = $row['Training'];
+	$Other = $row['Other'];
+	$employees_id = $row['employees_id'];
+
 	//$ = $row[''];
 }
 
@@ -52,25 +68,25 @@ foreach($result as $row)
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>المرتبــــة</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $place_birth; ?>" required />
+		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $grade; ?>" required />
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>رقمهــــا</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $place_birth; ?>" required />
+		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $job_id; ?>" required />
 		</div>
 	</div>
 		<div class="col-md-6">
 		<div class="form-group">
 		<label>مسمى الوظيفة</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $place_birth; ?>" required />
+		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $job_title; ?>" required />
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>الرمز التصنيفي</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $place_birth; ?>" required />
+		<input type="text" name="place_birth" id="place_birth" class="form-control" value="" />
 		</div>
 	</div>
 </div>
@@ -127,32 +143,32 @@ foreach($result as $row)
 					
 					<div class="form-group">
 						<label>الواجبات والمهام</label>
-						<textarea class="form-control" rows="8" id="post_content" name="post_content" placeholder="Post Content"></textarea>
+						<textarea class="form-control" rows="8" id="post_content" name="post_content" placeholder="Post Content"><?php echo $Duties_tasks; ?></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>الصلاحيــــات</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Date_Birth; ?>" />
+						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Powers; ?>" />
 					</div>
 					
 					<div class="form-group">
 						<label>المؤهل العلمي</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Date_Birth; ?>" />
+						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Qualification; ?>" />
 					</div>
 					
 					<div class="form-group">
 						<label>الخبرة العملية</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Date_Birth; ?>" />
+						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Practical_experience; ?>" />
 					</div>
 					
 					<div class="form-group">
 						<label>التدريب</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Date_Birth; ?>" />
+						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Training; ?>" />
 					</div>
 					
 					<div class="form-group">
 						<label>معارف وقدرات مهارات أخرى</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Date_Birth; ?>" />
+						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Other; ?>" />
 					</div>
 
 					
@@ -170,6 +186,10 @@ include("footer.php");
 
 <script>
 $(document).ready(function(){
+	
+	var tax1_amount = 0;
+	tax1_amount = parseFloat(415)*5/100;
+	alert(tax1_amount);
 	$('#edit_profile_form').on('submit', function(event){
 		event.preventDefault();
 		
