@@ -4,7 +4,7 @@ include('header.php');
 
 	if(isset($_GET["add"]))
 	{
-
+		$id = 0;
 	}
 	elseif(isset($_GET["update"]) && isset($_GET["id"]))
 	{
