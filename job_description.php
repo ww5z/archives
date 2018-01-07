@@ -8,10 +8,28 @@ include('header.php');
 	}
 	elseif(isset($_GET["update"]) && isset($_GET["id"]))
 	{
-
+		$id = $_GET["id"];
+	}else {
+		$id = 0;
 	}
 
 
+function fill_unit_select_box($connect)
+{ 
+ $output = '';
+ $query = "SELECT id_employe, EmployeeName FROM employees ORDER BY EmployeeName ASC";
+ $statement = $connect->prepare($query);
+ $statement->execute();
+ $result = $statement->fetchAll();
+ foreach($result as $row)
+ {
+  $output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'('.$row["id_employe"].')</option>';
+ }
+ return $output;
+}
+
+
+ /*
 $query = "
 SELECT * FROM job_description_card 
 WHERE employees_id = '".$_SESSION["id_employe"]."'
@@ -51,7 +69,7 @@ foreach($result as $row)
 
 	//$ = $row[''];
 }
-
+*/
 
 
 ?>
@@ -68,33 +86,46 @@ foreach($result as $row)
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>المرتبــــة</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $grade; ?>" required />
+		<input type="text" name="grade" id="grade" class="form-control" value="" />
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>رقمهــــا</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $job_id; ?>" required />
+		<input type="text" name="job_id" id="job_id" class="form-control" value="" />
 		</div>
 	</div>
 		<div class="col-md-6">
 		<div class="form-group">
 		<label>مسمى الوظيفة</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="<?php echo $job_title; ?>" required />
+		<input type="text" name="job_title" id="job_title" class="form-control" value=""/>
 		</div>
 	</div>
 	<div class="col-md-6">
-		<div class="form-group">
-		<label>الرمز التصنيفي</label>
-		<input type="text" name="place_birth" id="place_birth" class="form-control" value="" />
-		</div>
+<!--		<div class="form-group">
+		<label>الموظف</label>
+		<input type="text" name="employees_id" id="employees_id" class="form-control" value="" />
+		</div>-->
+		
+			<div class="form-group">
+			<label>الموظف:</label>
+			<div class="input-group">
+			<span class="input-group-addon">
+			<input type="text" name="c_facts_j" id="c_facts_j" style="width: 60px;text-align: center;" value="0" disabled="disabled" />
+			</span>
+			<select name="employees_id" id="employees_id" class="form-control" >
+			<option value="">اختر موظـــف</option>
+			<?php echo fill_unit_select_box($connect); ?>
+			</select>
+			</div>
+			</div>
 	</div>
 </div>
 					
 					
 <div class="form-group">
 <label>الإرتباط التنظيمي</label>
-<select class="form-control">
+<select class="form-control" name="OrganizationalLinkage" id="OrganizationalLinkage" >
 	<option selected="selected" value="-1">الرجاء الأختيار...</option>
 	<option value="01">مجلس أبها</option>
 	<option value="02">العميد</option>
@@ -143,40 +174,42 @@ foreach($result as $row)
 					
 					<div class="form-group">
 						<label>الواجبات والمهام</label>
-						<textarea class="form-control" rows="8" id="post_content" name="post_content" placeholder="Post Content"><?php echo $Duties_tasks; ?></textarea>
+						<textarea class="form-control" rows="8" id="Duties_tasks" name="Duties_tasks" placeholder="Post Content"></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>الصلاحيــــات</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Powers; ?>" />
+						<input type="text" name="Powers" id="Powers" class="form-control" value="" />
 					</div>
 					
 					<div class="form-group">
 						<label>المؤهل العلمي</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Qualification; ?>" />
+						<input type="text" name="Qualification" id="Qualification" class="form-control" value="" />
 					</div>
 					
 					<div class="form-group">
 						<label>الخبرة العملية</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Practical_experience; ?>" />
+						<input type="text" name="Practical_experience" id="Practical_experience" class="form-control" required value="" />
 					</div>
 					
 					<div class="form-group">
 						<label>التدريب</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Training; ?>" />
+						<input type="text" name="Training" id="Training" class="form-control" required value="" />
 					</div>
 					
 					<div class="form-group">
 						<label>معارف وقدرات مهارات أخرى</label>
-						<input type="text" name="Date_Birth" id="Date_Birth" class="form-control" required value="<?php echo $Other; ?>" />
+						<input type="text" name="Other" id="Other" class="form-control" value="" />
 					</div>
 
 					
 					
 					
 					<div class="form-group">
-						<input type="button" name="edit_prfile" id="edit_prfile" value="Edit" class="btn btn-info" />
+						<input type="button" name="btn_action" id="btn_actionn" value="Add" class="btn btn-info" />
 					</div>
+					<input type="hidden" name="form_action" id="form_action" value="Add" />
+					<input type="hidden" name="id_idjob_description_card" id="id_idjob_description_card" value="<?php echo $id; ?>" />
 				</form>
 			</div>
 		</div>
@@ -187,26 +220,67 @@ include("footer.php");
 <script>
 $(document).ready(function(){
 	
-	var tax1_amount = 0;
-	tax1_amount = parseFloat(415)*5/100;
-	alert(tax1_amount);
-	$('#edit_profile_form').on('submit', function(event){
-		event.preventDefault();
+	
+	var id_idjob_description_card = <?php echo $id; ?>;
+	
+	if (id_idjob_description_card > 0){
 		
-		$('#edit_prfile').attr('disabled', 'disabled');
-		var form_data = $(this).serialize();
+		var form_action = 'fetch_single';
 		$.ajax({
-			url:"Model/sit/edit_PersonalData.php",
+			url:'Model/job_description_card/job_description_card.php',
+			method:"POST",
+			data:{id_idjob_description_card:id_idjob_description_card, form_action:form_action},
+			dataType:"json",
+			success:function(data)
+			{
+				//$('#brandModal').modal('show');
+				$('#id_idjob_description_card').val(data.id_idjob_description_card);
+				$('#grade').val(data.grade);
+				$('#job_id').val(data.job_id);
+				$('#job_title').val(data.job_title);
+				$('#OrganizationalLinkage').val(data.OrganizationalLinkage);
+				$('#Duties_tasks').val(data.Duties_tasks);
+				$('#Powers').val(data.Powers);
+				$('#Qualification').val(data.Qualification);
+				$('#Practical_experience').val(data.Practical_experience);
+				$('#Training').val(data.Training);
+				$('#Other').val(data.Other);
+				$('#employees_id').val(data.employees_id);
+				$('.panel-heading').html("<span class='text-primary'>تحرير بطاقة الوصف الوظيفي");
+				$('#form_action').val('Edit');
+				$('#btn_action').val('Edit');
+			}
+		})
+		
+		
+	} else {
+		alert('no')
+	}
+	
+	
+	$(document).on('click','#btn_actionn', function(event){
+		
+		event.preventDefault();
+		$('#action').attr('disabled','disabled');
+		var form_data = $('#edit_profile_form').serialize();
+		
+		$.ajax({
+			url:"Model/job_description_card/job_description_card.php",
 			method:"POST",
 			data:form_data,
 			success:function(data)
 			{
-				$('#edit_prfile').attr('disabled', false);
-				$('#user_new_password').val('');
-				$('#user_re_enter_password').val('');
-				$('#message').html(data);
+				alert(data);
+				window.location.replace("job_description_card.php");
+				//$('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
 			}
 		})
 	});
+	
+	
+
 });
+	
+	
+	
 </script>
