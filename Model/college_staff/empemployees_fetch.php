@@ -10,15 +10,14 @@ $output = array();
 
 $query .= "
 SELECT * FROM employees 
-WHERE user_type = 'member' AND 
+INNER JOIN job_data ON job_data.id_job_data = employees.id_employe 
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= '(id_employe LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR card_number LIKE "%'.$_POST["search"]["value"].'%" ';
-        $query .= 'OR EmployeeName LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR job_title LIKE "%'.$_POST["search"]["value"].'%") ';
+	$query .= 'WHERE job_data.Ranked LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR employees.EmployeeName LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR job_data.JobTitle LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
 if(isset($_POST["order"]))
@@ -60,9 +59,9 @@ foreach($result as $row)
 	$sub_array[] = $row['id_employe'];
         //$sub_array[] = $row['computer_number'];
 	$sub_array[] = $row['EmployeeName'];
-	$sub_array[] = $row['job_title'];
-	$sub_array[] = $row['job_id']; 
-	$sub_array[] = $row['staff'];
+	$sub_array[] = $row['JobTitle'];
+	$sub_array[] = $row['Ranked']; 
+	$sub_array[] = $row['Staff'];
 	$sub_array[] = '<button type="button" name="update" id="'.$row["id_employe"].'" class="btn btn-warning btn-xs update">Update</button>';
 	$sub_array[] = '<button type="button" name="delete" id="'.$row["id_employe"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["id_employe"].'">Delete</button>';
 	$data[] = $sub_array;

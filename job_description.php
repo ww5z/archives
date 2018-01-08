@@ -120,86 +120,62 @@ foreach($result as $row)
 			</div>
 			</div>
 	</div>
-</div>
-					
-					
-<div class="form-group">
-<label>الإرتباط التنظيمي</label>
-<select class="form-control" name="OrganizationalLinkage" id="OrganizationalLinkage" >
-	<option selected="selected" value="-1">الرجاء الأختيار...</option>
-	<option value="01">مجلس أبها</option>
-	<option value="02">العميد</option>
-	<option value="9055-1">وكيل الكلية لخدمات التدريب</option>
-	<option value="9055-2">وكيل الكلية لشؤون المتدربين</option>
-		<option value="9055-5">الشؤون الادارية والمالية</option>
-	<option value="9055-8">الشئون الادارية</option>
-	<option value="9055-7">الشئون المالية</option>
+
+		<div class="col-md-6">
+		<div class="form-group">
+		<label>التخصـــص</label>
+		<input type="text" name="Specialization" id="Specialization" class="form-control" value=""/>
+		</div>
+	</div>				
+				<div class="col-md-6">	
+			<div class="form-group">
+			<label>الإرتباط التنظيمي</label>
+			<select class="form-control" name="OrganizationalLinkage" id="OrganizationalLinkage" >
+				<option selected="selected" value="-1">الرجاء الأختيار...</option>
+				<option value="01">مجلس أبها</option>
+				<option value="02">العميد</option>
+				<option value="9055-1">وكيل الكلية لخدمات التدريب</option>
+				<option value="9055-2">وكيل الكلية لشؤون المتدربين</option>
+					<option value="9055-5">الشؤون الادارية والمالية</option>
+				<option value="9055-8">الشئون الادارية</option>
+				<option value="9055-7">الشئون المالية</option>
+
+
+			</select>
+
+	</div>
 	
-<!--	<option value="9055-30">الاتصالات الإدارية والأرشيف</option>
-	<option value="9055-32">الأمن والحراسات</option>
-	<option value="9055-26">التدرب الإلكتروني ومصادر التدرب</option>
-	<option value="9055-44">التدريب التعاوني</option>
-	<option value="9055-31">التدريب المشترك</option>
-	<option value="9055-21">التطوير والجودة</option>
-	<option value="9055-9">التوجيه والارشاد</option>
-	<option value="9055-42">الحركة</option>
-	<option value="9055-25">السلامة والصحة المهنية</option>
-	<option value="9055-34">الصندوق</option>
-	<option value="9055-29">الصيانة والخدمات</option>
-	<option value="9055-11">العلاقات العامة</option>
-	<option value="9055-19">العيادة الطبية</option>
-	<option value="9055-3">القبول والتسجيل</option>
-	<option value="9055-6">المتابعه</option>
-	<option value="9055-35">المحاسبة</option>
-	<option value="9055-22">المسئولية الاجتماعية</option>
-	<option value="9055-37">المستودع</option>
-	<option value="9055-36">المشتريات</option>
-	<option value="9055-18">النشاط</option>
-	<option value="9055-20">تقنية المعلومات</option>
-	<option value="9055-24">خدمة المجتمع والتدريب المستمر</option>
-	<option value="9055-33">شئون الموظفين</option>
-	<option value="9055-47">صندوق المتدربين</option>
-	<option value="9055-48">قسم التقنية الإداريـــة</option>
-	<option value="9055-14">قسم التقنية الادارية</option>
-	<option value="9055-28">قسم الدراسات العامة</option>
-	<option value="9055-12">قسم تقنية الحاسب</option>
-	<option value="9055-38">مراقبة المخزون</option>
-	<option value="9055-17">مكتب التنسيق الوظيفي و التوجيه المهني</option>
-	<option value="9055-46">مكتب العميد</option>-->
-
-
-</select>
 </div>
 					
 					
 					<div class="form-group">
 						<label>الواجبات والمهام</label>
-						<textarea class="form-control" rows="8" id="Duties_tasks" name="Duties_tasks" placeholder="Post Content"></textarea>
+						<textarea class="form-control" rows="6" id="Duties_tasks" name="Duties_tasks" style="text-align: right; font-size: 20px"></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>الصلاحيــــات</label>
-						<input type="text" name="Powers" id="Powers" class="form-control" value="" />
+						<textarea class="form-control" rows="6" id="Powers" name="Powers" style="text-align: right; font-size: 20px"></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>المؤهل العلمي</label>
-						<input type="text" name="Qualification" id="Qualification" class="form-control" value="" />
+						<textarea class="form-control" rows="4" id="Qualification" name="Qualification" style="text-align: right; font-size: 20px"></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>الخبرة العملية</label>
-						<input type="text" name="Practical_experience" id="Practical_experience" class="form-control" required value="" />
+						<textarea class="form-control" rows="6" id="Practical_experience" name="Practical_experience" style="text-align: right; font-size: 20px"></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>التدريب</label>
-						<input type="text" name="Training" id="Training" class="form-control" required value="" />
+						<textarea class="form-control" rows="6" id="Training" name="Training" style="text-align: right; font-size: 20px"></textarea>
 					</div>
 					
 					<div class="form-group">
 						<label>معارف وقدرات مهارات أخرى</label>
-						<input type="text" name="Other" id="Other" class="form-control" value="" />
+						<textarea class="form-control" rows="6" id="Other" name="Other" style="text-align: right; font-size: 20px"></textarea>
 					</div>
 
 					
@@ -210,6 +186,7 @@ foreach($result as $row)
 					</div>
 					<input type="hidden" name="form_action" id="form_action" value="Add" />
 					<input type="hidden" name="id_idjob_description_card" id="id_idjob_description_card" value="<?php echo $id; ?>" />
+					<input type="hidden" name="employees_add" id="employees_add" value="<?php echo $_SESSION["id_employe"]; ?>" />
 				</form>
 			</div>
 		</div>
@@ -245,6 +222,7 @@ $(document).ready(function(){
 				$('#Practical_experience').val(data.Practical_experience);
 				$('#Training').val(data.Training);
 				$('#Other').val(data.Other);
+				$('#Specialization').val(data.Specialization);
 				$('#employees_id').val(data.employees_id);
 				$('.panel-heading').html("<span class='text-primary'>تحرير بطاقة الوصف الوظيفي");
 				$('#form_action').val('Edit');
@@ -254,7 +232,7 @@ $(document).ready(function(){
 		
 		
 	} else {
-		alert('no')
+		alert('Ok')
 	}
 	
 	

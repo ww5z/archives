@@ -3,23 +3,23 @@
 include('header.php');
 
 
-function employees_list($connect)
-{
-	$query = "
-	SELECT * FROM employees 
-	WHERE user_status = 'Active' 
-	ORDER BY EmployeeName ASC
-	";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	$output = '';
-	foreach($result as $row)
-	{
-		$output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'</option>';
-	}
-	return $output;
-}
+//function employees_list($connect)
+//{
+//	$query = "
+//	SELECT * FROM employees 
+//	WHERE user_status = 'Active' 
+//	ORDER BY EmployeeName ASC
+//	";
+//	$statement = $connect->prepare($query);
+//	$statement->execute();
+//	$result = $statement->fetchAll();
+//	$output = '';
+//	foreach($result as $row)
+//	{
+//		$output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'</option>';
+//	}
+//	return $output;
+//}
 
 ?>
 	<br />
@@ -66,32 +66,9 @@ function employees_list($connect)
     					<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title"><i class="fa fa-plus"></i> Add Brand</h4>
     				</div>
-    				<div class="modal-body">
-						
-						
-    					<div class="form-group">
-    						<select name="category_id" id="category_id" class="form-control" required>
-									<option selected="selected" value="-1">الرجاء الأختيار...</option>
-	<option value="01">مجلس أبها</option>
-	<option value="02">العميد</option>
-	<option value="9055-1">وكيل الكلية لخدمات التدريب</option>
-	<option value="9055-2">وكيل الكلية لشؤون المتدربين</option>
-		<option value="9055-5">الشؤون الادارية والمالية</option>
-	<option value="9055-8">الشئون الادارية</option>
-	<option value="9055-7">الشئون المالية</option>
-							</select>
-    					</div>
-    					<div class="form-group">
-							<label>Enter Brand Name</label>
-							<input type="text" name="brand_name" id="brand_name" class="form-control" required />
-						</div>
-						
-						
-						
-						
-						
-						
-    				</div>
+    				
+
+					
     				<div class="modal-footer">
     					<input type="hidden" name="id_idjob_description_card" id="id_idjob_description_card" />
     					<input type="hidden" name="btn_action" id="btn_action" />
@@ -113,7 +90,7 @@ $(document).ready(function(){
 	$('#add_button').click(function(){
 		$('#brandModal').modal('show');
 		$('#brand_form')[0].reset();
-		$('.modal-title').html("<i class='fa fa-plus'></i> Add Brand");
+		//$('.modal-title').html("<i class='fa fa-plus'></i> Add Brand");
 		$('#action').val('Add');
 		$('#btn_action').val('Add');
 	});
@@ -137,26 +114,7 @@ $(document).ready(function(){
 		})
 	});
 
-	$(document).on('click', '.update', function(){
-		var id_idjob_description_card = $(this).attr("id");
-		var btn_action = 'fetch_single';
-		$.ajax({
-			url:'Model/job_description_card/job_description_card.php',
-			method:"POST",
-			data:{id_idjob_description_card:id_idjob_description_card, btn_action:btn_action},
-			dataType:"json",
-			success:function(data)
-			{
-				$('#brandModal').modal('show');
-				$('#category_id').val(data.category_id);
-				$('#brand_name').val(data.brand_name);
-				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Brand");
-				$('#id_idjob_description_card').val(id_idjob_description_card);
-				$('#action').val('Edit');
-				$('#btn_action').val('Edit');
-			}
-		})
-	});
+
 
 	$(document).on('click','.delete', function(){
 		var id_idjob_description_card = $(this).attr("id");

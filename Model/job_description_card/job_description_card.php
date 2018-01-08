@@ -3,14 +3,15 @@
 //brand_action.php
 
 include('../../includes/database_connection.php');
-//echo    $_POST['form_action'];
+//echo    $_POST['employees_add'];
 if(isset($_POST['form_action']))
 {
 	if($_POST['form_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO job_description_card (grade, job_id, job_title, OrganizationalLinkage, Duties_tasks, Powers, Qualification, Practical_experience, Training, Other, job_status, employees_id) 
-		VALUES (:grade, :job_id, :job_title, :OrganizationalLinkage, :Duties_tasks, :Powers, :Qualification, :Practical_experience, :Training, :Other, :job_status, :employees_id)
+		INSERT INTO job_description_card (grade, job_id, job_title, OrganizationalLinkage, Duties_tasks, Powers, Qualification, Practical_experience, Training, employees_add, Other, Specialization, job_status, employees_id) 
+		
+		VALUES (:grade, :job_id, :job_title, :OrganizationalLinkage, :Duties_tasks, :Powers, :Qualification, :Practical_experience, :Training, :employees_add, :Other, :Specialization, :job_status, :employees_id)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
@@ -24,7 +25,9 @@ if(isset($_POST['form_action']))
 				':Qualification'	=>	$_POST["Qualification"],
 				':Practical_experience'	=>	$_POST["Practical_experience"],
 				':Training'	=>	$_POST["Training"],
+				':employees_add'	=>	$_POST["employees_add"],
 				':Other'	=>	$_POST["Other"],
+				':Specialization'	=>	$_POST["Specialization"],
 				':job_status'	=>	"Active",
 				':employees_id'	=>	$_POST["employees_id"]
 			)
@@ -61,6 +64,8 @@ if(isset($_POST['form_action']))
 			$output['Practical_experience'] = $row['Practical_experience'];
 			$output['Training'] = $row['Training'];
 			$output['Other'] = $row['Other'];
+			$output['employees_add'] = $row['employees_add'];
+			$output['Specialization'] = $row['Specialization'];
 			$output['employees_id'] = $row['employees_id'];
 			
 		}
@@ -81,6 +86,8 @@ if(isset($_POST['form_action']))
 		Practical_experience = :Practical_experience, 
 		Training = :Training, 
 		Other = :Other,
+		employees_add = :employees_add,
+		Specialization = :Specialization,
 		employees_id = :employees_id 
 		WHERE id_idjob_description_card = :id_idjob_description_card
 		";
@@ -97,6 +104,8 @@ if(isset($_POST['form_action']))
 				':Practical_experience'	=>	$_POST["Practical_experience"],
 				':Training'	=>	$_POST["Training"],
 				':Other'	=>	$_POST["Other"],
+				':employees_add'	=>	$_POST["employees_add"],
+				':Specialization'	=>	$_POST["Specialization"],
 				':employees_id'	=>	$_POST["employees_id"],
 				':id_idjob_description_card'	=>	$_POST["id_idjob_description_card"]
 			)
@@ -108,7 +117,7 @@ if(isset($_POST['form_action']))
 		}
 	}
 
-	if($_POST['btn_action'] == 'delete')
+	if($_POST['form_action'] == 'delete')
 	{
 		$status = 'active';
 		if($_POST['status'] == 'active')
