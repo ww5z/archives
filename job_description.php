@@ -16,8 +16,15 @@ include('header.php');
 
 function fill_unit_select_box($connect)
 { 
+					if($_SESSION['type'] == 'member')
+					{
+						$sq1 = "WHERE id_employe = ".$_SESSION['id_employe']." ";
+					} else {
+						$sq1 = "";
+					}
+
  $output = '';
- $query = "SELECT id_employe, EmployeeName FROM employees ORDER BY EmployeeName ASC";
+ $query = "SELECT id_employe, EmployeeName FROM employees $sq1 ORDER BY EmployeeName ASC";
  $statement = $connect->prepare($query);
  $statement->execute();
  $result = $statement->fetchAll();
@@ -82,7 +89,7 @@ foreach($result as $row)
 					<span id="message"></span>
 					
 					
-<div class="row">
+<div class="form-row">
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>المرتبــــة</label>
@@ -181,8 +188,10 @@ foreach($result as $row)
 					
 					
 					
-					<div class="form-group">
-						<input type="button" name="btn_action" id="btn_actionn" value="Add" class="btn btn-info" />
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<input type="button" name="btn_action" id="btn_actionn" value="حفــــظ" class="btn btn-primary" />
+						</div>
 					</div>
 					<input type="hidden" name="form_action" id="form_action" value="Add" />
 					<input type="hidden" name="id_idjob_description_card" id="id_idjob_description_card" value="<?php echo $id; ?>" />
@@ -259,6 +268,46 @@ $(document).ready(function(){
 
 });
 	
+
 	
+	
+	
+    // ################ دلة كود اختيار الموظف################
+      
+$(function(){
+	
+	var id_idjob = <?php echo $id; ?>;
+
+    $( '#c_facts_j' ).click(function (){
+        $( '#c_facts_j' ).val('');
+    });
+    
+    $( '#c_facts_j' ).change( function(){
+        var c_f_j = $("#c_facts_j").val();
+        $( '#employees_id' ).val(c_f_j);
+//        if(c_f_j > 18){
+//            $( '#employees_id_employe' ).val(0);
+//            $( '#c_facts_j' ).val(0);
+//        }
+    });
+    
+    $( '#employees_id' ).change( function(){
+        var fa_j = $("#employees_id").val();
+        $( '#c_facts_j' ).val(fa_j);
+    });
+	
+	
+		// تفعيل واختيار حقل الموظف
+	var typeSelect = "<?php echo $_SESSION['type']; ?>";
+	var employeesSelect = "<?php echo $_SESSION['id_employe']; ?>";
+	
+	//alert(typeSelect)
+	if(typeSelect == 'master'){
+		$("#c_facts_j").prop('disabled', false);
+		$("#employees_id").prop('disabled', false);
+	} 
+	
+    
+});
 	
 </script>

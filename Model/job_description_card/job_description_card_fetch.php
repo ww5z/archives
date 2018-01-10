@@ -6,10 +6,17 @@ include('../../includes/database_connection.php');
 
 $query = '';
 
+	if($_SESSION['type'] == 'member')
+	{
+		$sq1 = "AND employees.id_employe = ".$_SESSION['id_employe']." ";
+	} else {
+		$sq1 = "";
+	}
+
 $output = array();
 $query .= "
 SELECT * FROM job_description_card 
-INNER JOIN employees ON employees.id_employe = job_description_card.employees_id 
+INNER JOIN employees ON employees.id_employe = job_description_card.employees_id ".$sq1."
 ";
 
 if(isset($_POST["search"]["value"]))
