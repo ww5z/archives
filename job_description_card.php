@@ -3,24 +3,6 @@
 include('header.php');
 
 
-//function employees_list($connect)
-//{
-//	$query = "
-//	SELECT * FROM employees 
-//	WHERE user_status = 'Active' 
-//	ORDER BY EmployeeName ASC
-//	";
-//	$statement = $connect->prepare($query);
-//	$statement->execute();
-//	$result = $statement->fetchAll();
-//	$output = '';
-//	foreach($result as $row)
-//	{
-//		$output .= '<option value="'.$row["id_employe"].'">'.$row["EmployeeName"].'</option>';
-//	}
-//	return $output;
-//}
-
 ?>
 	<br />
 
@@ -31,12 +13,12 @@ include('header.php');
                 <div class="panel-heading">
                 	<div class="row">
                 		<div class="col-md-10">
-                			<h3 class="panel-title">Brand List</h3>
+                			<h3 class="panel-title">قائمة بطاقات الوصف الوظيفي</h3>
                 		</div>
                 		<div class="col-md-2" align="right">
 <!--                			<button type="button" name="add" id="add_button" class="btn btn-success btn-xs">Add</button>-->
 							
-							<a href="job_description.php?add=1" class="btn btn-info btn-xs">Create</a>
+							<a href="job_description.php?add=1" class="btn btn-info btn-xs">إنشاء بطاقة جديدة</a>
                 		</div>
                 	</div>
                 </div>
@@ -45,11 +27,11 @@ include('header.php');
                 		<thead>
 							<tr>
 								<th>ID</th>
-								<th>Category</th>
-								<th>Brand Name</th>
-								<th>Status</th>
-								<th>Edit</th>
-								<th>Delete</th>
+								<th>اسم الموظف</th>
+								<th>الوظيفية</th>
+								<th>الحالة</th>
+								<th>تحريـــر</th>
+								<th>حـــذف</th>
 							</tr>
 						</thead>
                 	</table>
@@ -58,27 +40,7 @@ include('header.php');
         </div>
     </div>
 
-    <div id="brandModal" class="modal fade">
-    	<div class="modal-dialog">
-    		<form method="post" id="brand_form">
-    			<div class="modal-content">
-    				<div class="modal-header">
-    					<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"><i class="fa fa-plus"></i> Add Brand</h4>
-    				</div>
-    				
 
-					
-    				<div class="modal-footer">
-    					<input type="hidden" name="id_idjob_description_card" id="id_idjob_description_card" />
-    					<input type="hidden" name="btn_action" id="btn_action" />
-    					<input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
-    					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    				</div>
-    			</div>
-    		</form>
-    	</div>
-    </div>
 <?php
 include("footer.php");
 ?>

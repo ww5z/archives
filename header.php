@@ -78,7 +78,7 @@ if(!isset($_SESSION["type"]))
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span> <?php echo $_SESSION["EmployeeName"]; ?></a>
 							<ul class="dropdown-menu">
-								<li><a href="profile.php">الملف الشخصي</a></li>
+								<li><a href="profile.php">تعديل كلمة المرور</a></li>
 								<li><a href="register/logout.php">تسجيل الخروج</a></li>
 							</ul>
 						</li>
