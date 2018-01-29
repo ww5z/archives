@@ -241,7 +241,7 @@ $(document).ready(function(){
 		
 		
 	} else {
-		alert('Ok')
+		//alert('Ok')
 	}
 	
 	

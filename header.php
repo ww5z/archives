@@ -72,7 +72,7 @@ if(!isset($_SESSION["type"]))
 					}
 					?>
 						<li><a href="college_empemployees.php">الموظفين</a></li>
-						<li><a href="order.php">Order</a></li>
+						<li><a href="job_description_card.php">بطاقات الوصف الوظيفي</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right flip">
 						<li class="dropdown">
