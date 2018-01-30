@@ -16,6 +16,7 @@ INNER JOIN job_data ON job_data.id_job_data = employees.id_employe
 if(isset($_POST["search"]["value"]))
 {
 	$query .= 'WHERE job_data.Ranked LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR employees.id_employe LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR employees.EmployeeName LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR job_data.JobTitle LIKE "%'.$_POST["search"]["value"].'%" ';
 }

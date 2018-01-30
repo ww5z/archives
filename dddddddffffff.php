@@ -11,14 +11,16 @@ include('includes/mysqli_connect.php');
         $r = @mysqli_query($dbc, $q);
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
         $id = $row['id_employe'];
-		$staff = '$2y$10$mVX9/gZ3H.irS2deRuukhuXHHAU057eCxO0995nLCm8jw.9KcEh1S';
+		//$staff = '$2y$10$mVX9/gZ3H.irS2deRuukhuXHHAU057eCxO0995nLCm8jw.9KcEh1S';
 
-	        $q2 = "UPDATE employees SET user_password='$staff' ";
+	        $q2 = "INSERT INTO `system_validity_groups` (`system_validity_id`, `employees_id`) 
+	VALUES ('3', '$id'), ('4', '$id'), ('5', '$id'), ('8', '$id'), ('9', '$id') ";
             $r2 = @mysqli_query($dbc, $q2);
         if (mysqli_affected_rows($dbc) == 1) {
                 echo "don $id <br />";
             }
 	
+
 
 	
 //        $q2 = "UPDATE job_data SET Staff='$staff' WHERE id_job_data=$id ";
