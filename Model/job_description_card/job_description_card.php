@@ -119,28 +119,20 @@ if(isset($_POST['form_action']))
 
 	if($_POST['form_action'] == 'delete')
 	{
-		$status = 'active';
-		if($_POST['status'] == 'active')
-		{
-			$status = 'inactive';
-		}
+		$id_idjob = $_POST['id_idjob_description_card'];
 		$query = "
-		UPDATE brand 
-		SET brand_status = :brand_status 
-		WHERE brand_id = :brand_id
+		delete from job_description_card WHERE id_idjob_description_card='$id_idjob' LIMIT 1
 		";
-		$statement = $connect->prepare($query);
-		$statement->execute(
-			array(
-				':brand_status'	=>	$status,
-				':brand_id'		=>	$_POST["brand_id"]
-			)
-		);
-		$result = $statement->fetchAll();
-		if(isset($result))
-		{
-			echo 'Brand status change to ' . $status;
-		}
+
+		
+		if ($connect->query($query) == TRUE) {
+    	echo "تم حذف بطاقة الوصف الوظيفي!";
+		} else {
+				echo "Error deleting record: " . $connect->error;
+			}
+
+		//$connect->close();
+		
 	}
 }
 

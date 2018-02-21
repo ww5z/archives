@@ -52,20 +52,12 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-	$status = '';
-	if($row['job_status'] == 'Active')
-	{
-		$status = '<span class="label label-success">Active</span>';
-	}
-	else
-	{
-		$status = '<span class="label label-danger">Inactive</span>';
-	}
+	
 	$sub_array = array();
 	$sub_array[] = $row['id_idjob_description_card'];
 	$sub_array[] = $row['EmployeeName'];
 	$sub_array[] = $row['grade'];
-	$sub_array[] = $status;
+	$sub_array[] = $row['job_title'];
 	$sub_array[] = '<a href="job_description.php?update=1&id='.$row["id_idjob_description_card"].'"><button class="btn btn-warning btn-xs update">تحـــديث</button></a>';
 	$sub_array[] = '<button type="button" name="delete" id="'.$row["id_idjob_description_card"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["job_status"].'">Delete</button>';
 	$data[] = $sub_array;

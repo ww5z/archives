@@ -29,7 +29,7 @@ include('header.php');
 								<th>ID</th>
 								<th>اسم الموظف</th>
 								<th>الوظيفية</th>
-								<th>الحالة</th>
+								<th>مسمى الوظيفة</th>
 								<th>تحريـــر</th>
 								<th>حـــذف</th>
 							</tr>
@@ -80,17 +80,18 @@ $(document).ready(function(){
 
 	$(document).on('click','.delete', function(){
 		var id_idjob_description_card = $(this).attr("id");
-		var status  = $(this).data('status');
+		var form_action = 'delete';
+		//alert(id_idjob_description_card)
 		var btn_action = 'delete';
-		if(confirm("Are you sure you want to change status?"))
+		if(confirm("هل أنت متأكد من رغبتك في حذف هذه البطاقة؟"))
 		{
 			$.ajax({
 				url:"Model/job_description_card/job_description_card.php",
 				method:"POST",
-				data:{id_idjob_description_card:id_idjob_description_card, status:status, btn_action:btn_action},
+				data:{id_idjob_description_card:id_idjob_description_card, btn_action:btn_action, form_action:form_action},
 				success:function(data)
 				{
-					$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+					$('#alert_action').fadeIn().html('<div class="alert alert-danger">'+data+'</div>');
 					branddataTable.ajax.reload();
 				}
 			})
