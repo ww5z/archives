@@ -141,11 +141,41 @@ foreach($result as $row)
 				<option selected="selected" value="-1">الرجاء الأختيار...</option>
 				<option value="01">مجلس أبها</option>
 				<option value="02">العميد</option>
-				<option value="9055-1">وكيل الكلية لخدمات التدريب</option>
-				<option value="9055-2">وكيل الكلية لشؤون المتدربين</option>
+				<option value="9055-30">الاتصالات الإدارية والأرشيف</option>
+					<option value="9055-32">الأمن والحراسات</option>
+					<option value="9055-26">التدرب الإلكتروني ومصادر التدرب</option>
+					<option value="9055-44">التدريب التعاوني</option>
+					<option value="9055-31">التدريب المشترك</option>
+					<option value="9055-21">التطوير والجودة</option>
+					<option value="9055-9">التوجيه والارشاد</option>
+					<option value="9055-42">الحركة</option>
+					<option value="9055-25">السلامة والصحة المهنية</option>
+					<option value="9055-8">الشئون الادارية</option>
 					<option value="9055-5">الشؤون الادارية والمالية</option>
-				<option value="9055-8">الشئون الادارية</option>
-				<option value="9055-7">الشئون المالية</option>
+					<option value="9055-7">الشئون المالية</option>
+					<option value="9055-34">الصندوق</option>
+					<option value="9055-29">الصيانة والخدمات</option>
+					<option value="9055-11">العلاقات العامة</option>
+					<option value="9055-19">العيادة الطبية</option>
+					<option value="9055-3">القبول والتسجيل</option>
+					<option value="9055-6">المتابعه</option>
+					<option value="9055-35">المحاسبة</option>
+					<option value="9055-22">المسئولية الاجتماعية</option>
+					<option value="9055-37">المستودع</option>
+					<option value="9055-36">المشتريات</option>
+					<option value="9055-18">النشاط</option>
+					<option value="9055-20">تقنية المعلومات</option>
+					<option value="9055-24">خدمة المجتمع والتدريب المستمر</option>
+					<option value="9055-33">شئون الموظفين</option>
+					<option value="9055-47">صندوق المتدربين</option>
+					<option value="9055-14">قسم التقنية الادارية</option>
+					<option value="9055-28">قسم الدراسات العامة</option>
+					<option value="9055-12">قسم تقنية الحاسب</option>
+					<option value="9055-38">مراقبة المخزون</option>
+					<option value="9055-17">مكتب التنسيق الوظيفي و التوجيه المهني</option>
+					<option value="9055-46">مكتب العميد</option>
+					<option value="9055-2">وكيل الكلية لشؤون المتدربين</option>
+					<option value="9055-1">وكيل الكلية للتدريب</option>
 
 
 			</select>
