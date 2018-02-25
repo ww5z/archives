@@ -79,9 +79,18 @@ $(document).ready(function(){
 
 
 	$(document).on('click','.delete', function(){
+<?php
+if($_SESSION['type'] == 'member')
+	{?>
+		var deletionValidity = false;
+<?php	} else { ?>
+		var deletionValidity = true;
+<?php	} ?>
+		
+		if (deletionValidity == true){
 		var id_idjob_description_card = $(this).attr("id");
 		var form_action = 'delete';
-		//alert(id_idjob_description_card)
+		
 		var btn_action = 'delete';
 		if(confirm("هل أنت متأكد من رغبتك في حذف هذه البطاقة؟"))
 		{
@@ -100,6 +109,10 @@ $(document).ready(function(){
 		{
 			return false;
 		}
+		}else {
+			alert("لا تملك صلاحية الحذف !");
+		}
+		
 	});
 
 
