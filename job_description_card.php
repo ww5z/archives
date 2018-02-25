@@ -17,8 +17,11 @@ include('header.php');
                 		</div>
                 		<div class="col-md-2" align="right">
 <!--                			<button type="button" name="add" id="add_button" class="btn btn-success btn-xs">Add</button>-->
+							<?php if($_SESSION['type'] != 'member')
+								{
+									echo '<a href="job_description.php?add=1" class="btn btn-info btn-xs">إنشاء بطاقة جديدة</a>';
+								} ?>
 							
-							<a href="job_description.php?add=1" class="btn btn-info btn-xs">إنشاء بطاقة جديدة</a>
                 		</div>
                 	</div>
                 </div>
