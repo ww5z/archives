@@ -133,7 +133,7 @@ if($_SESSION['type'] == 'member')
 				"orderable":false,
 			},
 		],
-		"pageLength": 10
+		"pageLength": 25
 	});
 
 });

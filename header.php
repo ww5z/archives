@@ -61,13 +61,21 @@ if(!isset($_SESSION["type"]))
 			<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 					<?php
-					if($_SESSION['type'] == 'master')
+					if($_SESSION['type'] != 'member')
 					{
 					?>
-						<li><a href="user.php">المستخدمين</a></li>
+						<!--<li><a href="user.php">المستخدمين</a></li>-->
 						
-						<li><a href="brand.php">Brand</a></li>
-						<li><a href="product.php">Product</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span>النظام الإحصائي</a>
+							<ul class="dropdown-menu">
+								<li><a href="st_statistical_data.php">عرض الإحصائيات</a></li>
+								<li><a href="st_statistical_system.php">الأقســــام</a></li>
+								<li><a href="st_department.php">اسماء البيانات</a></li>
+							</ul>
+						</li>
+						
+						<!--<li><a href="product.php">Product</a></li>-->
 					<?php
 					}
 					?>

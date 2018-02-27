@@ -5,7 +5,7 @@ require_once ('header.php');
 
 ############################ أختيار المعني بالمعاملة
 
-// ///////////$connect = new PDO("mysql:host=localhost;dbname=testing4", "root", "1bn5n52");
+
 function fill_unit_select_box($connect)
 { 
  $output = '';
