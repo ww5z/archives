@@ -28,7 +28,7 @@ function fill_brand_list($connect, $category_id)
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
-	$output = '<option value="">Select Department</option>';
+	$output = '<option value="">اختـــر الأسم</option>';
 	foreach($result as $row)
 	{
 		$output .= '<option value="'.$row["id_Department"].'">'.$row["nameDepartment"].'</option>';

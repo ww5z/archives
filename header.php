@@ -72,6 +72,7 @@ if(!isset($_SESSION["type"]))
 								<li><a href="st_statistical_data.php">عرض الإحصائيات</a></li>
 								<li><a href="st_statistical_system.php">الأقســــام</a></li>
 								<li><a href="st_department.php">اسماء البيانات</a></li>
+								<li><a href="st_department_addpercent.php">تسجل النسب الإحصائية</a></li>
 							</ul>
 						</li>
 						
