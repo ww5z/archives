@@ -12,6 +12,28 @@ include('Model/st_statistical_data/function.php');
 	if($_SESSION['type'] != 'member')
 	{
 	?>
+		
+
+
+		
+		
+<form class="form-inline">
+
+	<div class="form-group">
+		<a href="st_statistical_system.php" class="btn btn-primary">الأقســـام</a>
+	</div>
+	<div class="form-group">
+		<a href="st_department.php" class="btn btn-primary">اسمـــاء البيــنات</a>
+	</div>
+	<div class="form-group">
+		<a href="st_department_addpercent.php" class="btn btn-primary">تسجيل النسب الإحصائية</a>
+	</div>
+	
+</form>
+<br />
+<hr />
+<br />
+		
 	<div class="col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading"><strong>مجموع الموظفين</strong></div>
