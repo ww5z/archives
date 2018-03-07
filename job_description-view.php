@@ -2,12 +2,6 @@
 //index.php
 include('header.php');
 
-if($_SESSION["type"] != 'master' && $_SESSION["type"] != 'user')
-{
-	header("location:job_description_card.php");
-}
-
-
 	if(isset($_GET["add"]))
 	{
 		$id = 0;
@@ -99,19 +93,21 @@ foreach($result as $row)
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>المرتبــــة</label>
-		<input type="text" name="grade" id="grade" class="form-control" value="" />
+			<div id="grade"></div>
+
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="form-group">
 		<label>رقمهــــا</label>
-		<input type="text" name="job_id" id="job_id" class="form-control" value="" />
+			<div id="job_id"></div>
+		
 		</div>
 	</div>
 		<div class="col-md-6">
 		<div class="form-group">
 		<label>مسمى الوظيفة</label>
-		<input type="text" name="job_title" id="job_title" class="form-control" value=""/>
+			<div id="job_title"></div>
 		</div>
 	</div>
 	<div class="col-md-6">
@@ -127,7 +123,7 @@ foreach($result as $row)
 			<input type="text" name="c_facts_j" id="c_facts_j" style="width: 60px;text-align: center;" value="0" disabled="disabled" />
 			</span>
 			<select name="employees_id" id="employees_id" class="form-control" >
-			<option value="">اختر موظـــف</option>
+			<option value="">الموظــــف
 			<?php echo fill_unit_select_box($connect); ?>
 			</select>
 			</div>
@@ -137,7 +133,7 @@ foreach($result as $row)
 		<div class="col-md-6">
 		<div class="form-group">
 		<label>التخصـــص</label>
-		<input type="text" name="Specialization" id="Specialization" class="form-control" value=""/>
+			<div id="Specialization"></div>
 		</div>
 	</div>				
 				<div class="col-md-6">	
@@ -193,7 +189,8 @@ foreach($result as $row)
 					
 					<div class="form-group">
 						<label>الواجبات والمهام</label>
-						<textarea class="form-control" rows="6" id="Duties_tasks" name="Duties_tasks" style="text-align: right; font-size: 20px"></textarea>
+						<div id="Duties_tasks"></div>
+						<!--<textarea class="form-control" rows="6" id="Duties_tasks" name="Duties_tasks" style="text-align: right; font-size: 20px"></textarea>-->
 					</div>
 					
 					<div class="form-group">
@@ -257,18 +254,18 @@ $(document).ready(function(){
 			{
 				//$('#brandModal').modal('show');
 				$('#id_idjob_description_card').val(data.id_idjob_description_card);
-				$('#grade').val(data.grade);
-				$('#job_id').val(data.job_id);
-				$('#job_title').val(data.job_title);
-				$('#OrganizationalLinkage').val(data.OrganizationalLinkage);
-				$('#Duties_tasks').val(data.Duties_tasks);
-				$('#Powers').val(data.Powers);
-				$('#Qualification').val(data.Qualification);
-				$('#Practical_experience').val(data.Practical_experience);
-				$('#Training').val(data.Training);
-				$('#Other').val(data.Other);
+				$('#grade').text(data.grade);
+				$('#job_id').text(data.job_id);
+				$('#job_title').text(data.job_title);
+				$('#OrganizationalLinkage').val(data.OrganizationalLinkage); ///
+				$('#Duties_tasks').text(data.Duties_tasks);
+				$('#Powers').text(data.Powers);
+				$('#Qualification').text(data.Qualification);
+				$('#Practical_experience').text(data.Practical_experience);
+				$('#Training').text(data.Training);
+				$('#Other').text(data.Other);
 				$('#Specialization').val(data.Specialization);
-				$('#employees_id').val(data.employees_id);
+				$('#employees_id').val(data.employees_id); //////
 				$('.panel-heading').html("<span class='text-primary'>تحرير بطاقة الوصف الوظيفي");
 				$('#form_action').val('Edit');
 				$('#btn_action').val('Edit');

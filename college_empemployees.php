@@ -3,10 +3,11 @@
 
 $page_title = 'موظفين الكلية'; 
 include('header.php');
-if($_SESSION["type"] != 'master' && $_SESSION["type"] != 'user')
-{
-	header("location:index.php");
-}
+
+//if($_SESSION["type"] != 'master' && $_SESSION["type"] != 'user')
+//{
+//	header("location:index.php");
+//}
 
 
 ?>
