@@ -1,3 +1,4 @@
+<link href="./css/style_print.css" rel="stylesheet">
 <?php
 //index.php
 include('header.php');
@@ -111,17 +112,11 @@ foreach($result as $row)
 		</div>
 	</div>
 	<div class="col-md-6">
-<!--		<div class="form-group">
-		<label>الموظف</label>
-		<input type="text" name="employees_id" id="employees_id" class="form-control" value="" />
-		</div>-->
 		
 			<div class="form-group">
 			<label>الموظف:</label>
 			<div class="input-group">
-			<span class="input-group-addon">
-			<input type="text" name="c_facts_j" id="c_facts_j" style="width: 60px;text-align: center;" value="0" disabled="disabled" />
-			</span>
+
 			<select name="employees_id" id="employees_id" class="form-control" >
 			<option value="">الموظــــف
 			<?php echo fill_unit_select_box($connect); ?>
@@ -186,36 +181,35 @@ foreach($result as $row)
 	
 </div>
 					
-					
+					<hr />
 					<div class="form-group">
 						<label>الواجبات والمهام</label>
 						<div id="Duties_tasks"></div>
-						<!--<textarea class="form-control" rows="6" id="Duties_tasks" name="Duties_tasks" style="text-align: right; font-size: 20px"></textarea>-->
 					</div>
-					
+					<hr />
 					<div class="form-group">
 						<label>الصلاحيــــات</label>
-						<textarea class="form-control" rows="6" id="Powers" name="Powers" style="text-align: right; font-size: 20px"></textarea>
+						<div id="Powers"></div>
 					</div>
-					
+					<hr />
 					<div class="form-group">
 						<label>المؤهل العلمي</label>
-						<textarea class="form-control" rows="4" id="Qualification" name="Qualification" style="text-align: right; font-size: 20px"></textarea>
+						<div id="Qualification"></div>
 					</div>
-					
+					<hr />
 					<div class="form-group">
 						<label>الخبرة العملية</label>
-						<textarea class="form-control" rows="6" id="Practical_experience" name="Practical_experience" style="text-align: right; font-size: 20px"></textarea>
+						<div id="Practical_experience"></div>
 					</div>
-					
+					<hr />
 					<div class="form-group">
 						<label>التدريب</label>
-						<textarea class="form-control" rows="6" id="Training" name="Training" style="text-align: right; font-size: 20px"></textarea>
+						<div id="Training"></div>
 					</div>
-					
+					<hr />
 					<div class="form-group">
 						<label>معارف وقدرات مهارات أخرى</label>
-						<textarea class="form-control" rows="6" id="Other" name="Other" style="text-align: right; font-size: 20px"></textarea>
+						<div id="Other"></div>
 					</div>
 
 					
@@ -223,7 +217,7 @@ foreach($result as $row)
 					
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<input type="button" name="btn_action" id="btn_actionn" value="حفــــظ" class="btn btn-primary" />
+							<input type="button" name="btn_action" id="btn_actionn" value="طباعــة" class="btn btn-primary" />
 						</div>
 					</div>
 					<input type="hidden" name="form_action" id="form_action" value="Add" />
@@ -239,6 +233,10 @@ include("footer.php");
 <script>
 $(document).ready(function(){
 	
+	function nl2br (str, is_xhtml) {     
+        var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br/>' : '<br>';      
+        return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');  
+    }  
 	
 	var id_idjob_description_card = <?php echo $id; ?>;
 	
@@ -258,18 +256,29 @@ $(document).ready(function(){
 				$('#job_id').text(data.job_id);
 				$('#job_title').text(data.job_title);
 				$('#OrganizationalLinkage').val(data.OrganizationalLinkage); ///
-				$('#Duties_tasks').text(data.Duties_tasks);
+				//$('#Duties_tasks').text(data.Duties_tasks); //####
 				$('#Powers').text(data.Powers);
 				$('#Qualification').text(data.Qualification);
 				$('#Practical_experience').text(data.Practical_experience);
 				$('#Training').text(data.Training);
 				$('#Other').text(data.Other);
-				$('#Specialization').val(data.Specialization);
+				$('#Specialization').text(data.Specialization);
 				$('#employees_id').val(data.employees_id); //////
-				$('.panel-heading').html("<span class='text-primary'>تحرير بطاقة الوصف الوظيفي");
+				$('.panel-heading').html("<span class='text-primary'> بطاقة الوصف الوظيفي");
 				$('#form_action').val('Edit');
-				$('#btn_action').val('Edit');
+				$('#btn_action').val('Edit'); 
+				$("#Duties_tasks").html(nl2br(data.Duties_tasks)); 
 			}
+			
+			
+			   
+      
+    
+      
+    
+		
+			
+			
 		})
 		
 		
@@ -278,24 +287,29 @@ $(document).ready(function(){
 	}
 	
 	
-	$(document).on('click','#btn_actionn', function(event){
-		
-		event.preventDefault();
-		$('#action').attr('disabled','disabled');
-		var form_data = $('#edit_profile_form').serialize();
-		
-		$.ajax({
-			url:"Model/job_description_card/job_description_card.php",
-			method:"POST",
-			data:form_data,
-			success:function(data)
-			{
-				alert(data);
-				window.location.replace("job_description_card.php");
-				//$('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
-			}
-		})
-	});
+//	$(document).on('click','#btn_actionn', function(event){
+//		
+//		event.preventDefault();
+//		$('#action').attr('disabled','disabled');
+//		var form_data = $('#edit_profile_form').serialize();
+//		
+//		$.ajax({
+//			url:"Model/job_description_card/job_description_card.php",
+//			method:"POST",
+//			data:form_data,
+//			success:function(data)
+//			{
+//				alert(data);
+//				window.location.replace("job_description_card.php");
+//				//$('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+//			}
+//		})
+//	});
+	
+	
+$('#btn_actionn').click(function(){
+     window.print();
+})
 	
 	
 

@@ -1,0 +1,22 @@
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+	border: #FFFFFF !important;
+	font-size: 23px !important;
+	height: 40px !important;
+}
+.form-row {
+	font-size: 23px;
+}
+
+@media print body {
+
+#btn_actionn {
+	display: none;
+}        
+
+
+}

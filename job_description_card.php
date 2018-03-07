@@ -33,8 +33,9 @@ include('header.php');
 								<th>اسم الموظف</th>
 								<th>الوظيفية</th>
 								<th>مسمى الوظيفة</th>
-								<th>تحريـــر</th>
-								<th>حـــذف</th>
+								<th></th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
                 	</table>
