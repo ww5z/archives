@@ -2,10 +2,10 @@
 //index.php
 include('header.php');
 
-if($_SESSION["type"] != 'master' && $_SESSION["type"] != 'user')
-{
-	header("location:job_description_card.php");
-}
+//if($_SESSION["type"] != 'master' && $_SESSION["type"] != 'user')
+//{
+//	header("location:job_description_card.php");
+//}
 
 
 	if(isset($_GET["add"]))
