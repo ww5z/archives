@@ -1,6 +1,6 @@
 <link href="./css/style_print.css" rel="stylesheet">
 <?php
-//index.php
+
 include('header.php');
 
 	if(isset($_GET["add"]))
@@ -35,49 +35,6 @@ function fill_unit_select_box($connect)
  }
  return $output;
 }
-
-
- /*
-$query = "
-SELECT * FROM job_description_card 
-WHERE employees_id = '".$_SESSION["id_employe"]."'
-";
-$statement = $connect->prepare($query);
-$statement->execute();
-$result = $statement->fetchAll();
-
-$id_idjob_description_card = '';
-$grade = '';
-$job_id = '';
-$job_title = '';
-$OrganizationalLinkage = '';
-$Duties_tasks = '';
-$Powers = '';
-$Qualification = '';
-$Practical_experience = '';
-$Training = '';
-$Other = '';
-$employees_id = '';
-
-
-foreach($result as $row)
-{
-	$id_idjob_description_card = $row['id_idjob_description_card'];
-	$grade = $row['grade'];
-	$job_id = $row['job_id'];
-	$job_title = $row['job_title'];
-	$OrganizationalLinkage = $row['OrganizationalLinkage'];
-	$Duties_tasks = $row['Duties_tasks'];
-	$Powers = $row['Powers'];
-	$Qualification = $row['Qualification'];
-	$Practical_experience = $row['Practical_experience'];
-	$Training = $row['Training'];
-	$Other = $row['Other'];
-	$employees_id = $row['employees_id'];
-
-	//$ = $row[''];
-}
-*/
 
 
 ?>
@@ -118,7 +75,6 @@ foreach($result as $row)
 			<div class="input-group">
 
 			<select name="employees_id" id="employees_id" class="form-control" >
-			<option value="">الموظــــف
 			<?php echo fill_unit_select_box($connect); ?>
 			</select>
 			</div>
@@ -134,7 +90,7 @@ foreach($result as $row)
 				<div class="col-md-6">	
 			<div class="form-group">
 			<label>الإرتباط التنظيمي</label>
-			<select class="form-control" name="OrganizationalLinkage" id="OrganizationalLinkage" >
+			<select disabled class="form-control" name="OrganizationalLinkage" id="OrganizationalLinkage" >
 				<option selected="selected" value="-1">الرجاء الأختيار...</option>
 				<option value="01">مجلس أبها</option>
 				<option value="02">العميد</option>
@@ -263,7 +219,8 @@ $(document).ready(function(){
 				$('#Training').text(data.Training);
 				$('#Other').text(data.Other);
 				$('#Specialization').text(data.Specialization);
-				$('#employees_id').val(data.employees_id); //////
+				$('#employees_id').val(data.employees_id).prop('disabled', 'disabled'); //////
+				
 				$('.panel-heading').html("<span class='text-primary'> بطاقة الوصف الوظيفي");
 				$('#form_action').val('Edit');
 				$('#btn_action').val('Edit'); 
@@ -287,25 +244,6 @@ $(document).ready(function(){
 	}
 	
 	
-//	$(document).on('click','#btn_actionn', function(event){
-//		
-//		event.preventDefault();
-//		$('#action').attr('disabled','disabled');
-//		var form_data = $('#edit_profile_form').serialize();
-//		
-//		$.ajax({
-//			url:"Model/job_description_card/job_description_card.php",
-//			method:"POST",
-//			data:form_data,
-//			success:function(data)
-//			{
-//				alert(data);
-//				window.location.replace("job_description_card.php");
-//				//$('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
-//			}
-//		})
-//	});
-	
 	
 $('#btn_actionn').click(function(){
      window.print();
@@ -317,9 +255,7 @@ $('#btn_actionn').click(function(){
 	
 
 	
-	
-	
-    // ################ دلة كود اختيار الموظف################
+
       
 $(function(){
 	
@@ -332,10 +268,7 @@ $(function(){
     $( '#c_facts_j' ).change( function(){
         var c_f_j = $("#c_facts_j").val();
         $( '#employees_id' ).val(c_f_j);
-//        if(c_f_j > 18){
-//            $( '#employees_id_employe' ).val(0);
-//            $( '#c_facts_j' ).val(0);
-//        }
+
     });
     
     $( '#employees_id' ).change( function(){

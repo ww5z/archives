@@ -1,3 +1,5 @@
+@page {margin:0 -6cm}
+html {margin:0 6cm}
 
 select {
     -webkit-appearance: none;
@@ -12,11 +14,17 @@ select {
 	font-size: 23px;
 }
 
-@media print body {
+#OrganizationalLinkage, #employees_id{
+	background: #FFFFFF;
+}
 
-#btn_actionn {
+
+
+@media print {
+
+ #btn_actionn {
 	display: none;
-}        
+}      
 
 
 }
