@@ -58,7 +58,7 @@ foreach($result as $row)
 	$sub_array[] = $row['EmployeeName'];
 	$sub_array[] = $row['grade'];
 	$sub_array[] = $row['job_title'];
-	$sub_array[] = '<a href="job_description-view.php?update=1&id='.$row["id_idjob_description_card"].'"><button class="btn btn-info btn-xs view">استعــراض</button></a>';
+	$sub_array[] = '<a target="_blank" href="job_description-view.php?update=1&id='.$row["id_idjob_description_card"].'"><button class="btn btn-info btn-xs view">استعــراض</button></a>';
 	$sub_array[] = '<a href="job_description.php?update=1&id='.$row["id_idjob_description_card"].'"><button class="btn btn-warning btn-xs update">تحـــديث</button></a>';
 	$sub_array[] = '<button type="button" name="delete" id="'.$row["id_idjob_description_card"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["job_status"].'">Delete</button>';
 	$data[] = $sub_array;
