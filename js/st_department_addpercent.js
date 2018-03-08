@@ -24,6 +24,7 @@ $( document ).ready( function(){
                //var post_1 = 'no_computer';
                 var nocm = addpercent_data;
               take_followup_start(addpercent_data) 
+			st_statistical_chart(addpercent_data)
 			//take_form(nocm, post_1); // تنفيذ دالة الإرسال
            }
 		
@@ -208,6 +209,45 @@ function take_followup_start(id){
 }
 
 
+
+// جلب الشارت
+function st_statistical_chart(id){
+
+    
+    $.ajax({
+        url: "Model/st_statistical_data/st_statistical_chart.php",
+        type: 'POST',
+        data:"id="+id,
+        beforeSend: function (xhr) {
+            //$("#NoCoMsg").show();
+            $('#procedure').html('<img src="./images/ajax-loader.gif" width="45" height="45" />');
+        },
+        statusCode: { // كود خاص بتحليل أخطاء الصفحه
+            404: function (){
+                $("#procedure").text("لم يتم العثور على الصفحة");
+            }, 
+            403: function (){
+                $("#procedure").text("Bad request");
+            }
+        },
+        success: function (data, textStatus, jqXHR) {
+                
+           $('#st_statistical_chart').html(data);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $("#insert_data").text("errorrrrrrrrrrr");
+        },
+        complete: function (jqXHR, textStatus) {
+            //$("#insert_data").html(comment).fadeOut(5000);
+        }
+
+
+    });
+    
+    
+          
+}
 
 // حذف البيانات
 function take_form_delete() {

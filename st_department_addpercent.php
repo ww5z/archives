@@ -69,6 +69,8 @@ include('Model/st_statistical_data/function.php');
   
           
           <div id="procedure"></div>
+<br />
+<div id="st_statistical_chart"></div>
           
           
           
