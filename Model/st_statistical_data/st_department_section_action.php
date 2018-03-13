@@ -16,8 +16,8 @@ if ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) {
 }
 
 
-$q = "SELECT * FROM st_statistical_data WHERE id_Department = '$number'
-            "; //users WHERE activated='1' order by id_pursuance //order by id_decisions ASC
+$q = "SELECT * FROM st_statistical_data 
+INNER JOIN st_department_table ON st_department_table.id_Department = st_statistical_data.id_Department AND st_statistical_data.id_Department = '$number' ORDER BY st_statistical_data.year  ASC"; //SELECT * FROM st_statistical_data WHERE id_Department = '$number'
 
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
@@ -30,7 +30,7 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
                     <div class="panel-heading">
                     	<div class="row">
                         	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                            	<h3 class="panel-title">قائمة النسب الإحصائية</h3>
+                            	<h3 class="panel-title"> النسب الإحصائية</h3>
                             </div>
                         </div>
                        
@@ -41,13 +41,10 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
                    			<table id="user_data" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>التاريخ</th>
+                  <th>القسم</th>
+					<th>السنة</th>
 					<th>الفصل التدريبي</th>
                   <th>النسبــــة</th>
-                  <th>الموظف</th>
-					<th>تاريخ التعديل</th>
-					<th>تحديث</th>
-                  <th>حــذف</th>
                 </tr>
               </thead>
               <tbody>
@@ -69,21 +66,19 @@ $r = @mysqli_query ($dbc, $q); // Run the query.
 	{
 		$status = '<span class="label label-info" btn-xs>سنــــوي</span>';
 	}
-        $year  =   $row['year'];
-		//$training_chapter  =   $row['training_chapter'];
+        $nameDepartment  =   $row['nameDepartment'];
+		$year  =   $row['year'];
         $theRatio        =   $row['theRatio'];
 		$employees_id_Add        =   $row['employees_id_Add'];
 		$timeEnter        =   $row['timeEnter'];
         $id_Department            =   $row['id_Department']; /// الأيدي الخاص بالأسم
         $id_statistical     =  $row["id_statistical"];
         echo "<tr>
-                  <td>$year</td>
+                  <td>$nameDepartment</td>
+				  <td>$year</td>
                   <td>$status</td>
 				  <td>$theRatio</td>
-                  <td>$employees_id_Add</td>
-				  <td>$timeEnter</td>
-                  <td><button type='button' name='update' id='$id_statistical' class='btn btn-warning btn-xs update'>تحــريــر</button></td>
-				  <td><button type='button' name='delete' id='$id_statistical' class='btn btn-danger btn-xs delete' data-status='$id_statistical'>Delete</button></td>
+                  
                 </tr>";
         
     }

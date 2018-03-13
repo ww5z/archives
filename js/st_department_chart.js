@@ -6,7 +6,7 @@ $( document ).ready( function(){
 		var category_id = $('#addpercent_id').val();
 		var btn_action = 'load_brand';
 		$.ajax({
-		url:"Model/st_statistical_data/st_department_addpercent_action.php",
+		url:"Model/st_statistical_data/st_department_addpercent_insert.php",
 		method:"POST",
 		data:{category_id:category_id, btn_action:btn_action},
 		success:function(data)
@@ -16,10 +16,18 @@ $( document ).ready( function(){
 		});
 	});
 	
-	
-	// عند تحيد القائمة الثانية
 	$('#addpercent_data').change(function(){
-		take_theRatios()
+		var addpercent_data = $('#addpercent_data').val();
+		var btn_action = 'load_brand';
+		
+		if (addpercent_data != ''){
+               //var post_1 = 'no_computer';
+                var nocm = addpercent_data;
+              take_followup_start(addpercent_data) 
+			st_statistical_chart(addpercent_data)
+			//take_form(nocm, post_1); // تنفيذ دالة الإرسال
+           }
+		
 	});
 	
  
@@ -40,54 +48,6 @@ $( document ).ready( function(){
 		
 		$('#id_Department').val(addpercent_data);
     });
-	
-	
-	 $(document).on('click', '.update', function(){
-        var id_statistical = $(this).attr("id");
-        var btn_action = 'fetch_single';
-        $.ajax({
-            url:"Model/st_statistical_data/st_department_addpercent_action.php",
-            method:"POST",
-            data:{id_statistical:id_statistical, btn_action:btn_action},
-            dataType:"json",
-            success:function(data){
-                $('#productModal').modal('show');
-                $('#theRatio').val(data.theRatio);
-                $('#year').val(data.year);
-                $('#training_chapter').val(data.training_chapter);
-                $('#id_statistical').val(id_statistical);
-                $('#action').val("Edit");
-                $('#btn_action').val("Edit");
-            }
-        })
-    });
-	
-	
-
-	
-	    $(document).on('click', '.delete', function(){
-        var id_statistical = $(this).attr("id");
-        var btn_action = 'delete';
-			alert(id_statistical)
-        if(confirm("هل أنت متأكد من رغبتك في حذف هذه النسة؟"))
-        {
-            $.ajax({
-                url:"Model/st_statistical_data/st_department_addpercent_action.php",
-                method:"POST",
-                data:{id_statistical:id_statistical, btn_action:btn_action},
-                success:function(data){
-                    $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
-                    take_theRatios();
-                }
-            });
-        }
-        else
-        {
-            return false;
-        }
-    });
-	
-	
 
     $(document).on('submit', '#product_form', function(event){
 		var id_Department = $('#id_Department').val();
@@ -96,7 +56,7 @@ $( document ).ready( function(){
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
         $.ajax({
-            url:"Model/st_statistical_data/st_department_addpercent_action.php",
+            url:"Model/st_statistical_data/st_department_addpercent_insert.php",
             method:"POST",
             data:form_data,
             success:function(data)
@@ -106,7 +66,8 @@ $( document ).ready( function(){
                 $('#productModal').modal('hide');
                 $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
                 $('#action').attr('disabled', false);
-				take_theRatios()
+                //productdataTable.ajax.reload();
+				take_followup_start(id_Department)
             }
         })
     });
@@ -119,18 +80,9 @@ $( document ).ready( function(){
 
 
 
-// ################ جلب بيانات النسب ################
-function take_theRatios(){
-	
-		var addpercent_data = $('#addpercent_data').val();
-		var btn_action = 'load_brand';
-		
-		if (addpercent_data != ''){
-              var nocm = addpercent_data;
-              take_followup_start(addpercent_data) 
-           }
-	
-}
+
+
+
 
 
 
@@ -237,7 +189,7 @@ function take_followup_start(id){
                 $("#procedure").text("Bad request");
             }
         },
-        success:function(data){
+        success: function (data, textStatus, jqXHR) {
                 
            $('#procedure').html(data);
 
@@ -257,6 +209,47 @@ function take_followup_start(id){
 }
 
 
+
+// جلب الشارت
+function st_statistical_chart(id){
+
+    
+    $.ajax({
+        url: "Model/st_statistical_data/st_statistical_chart.php",
+        type: 'POST',
+        data:"id="+id,
+        beforeSend: function (xhr) {
+            //$("#NoCoMsg").show();
+            $('#procedure').html('<img src="./images/ajax-loader.gif" width="45" height="45" />');
+        },
+        statusCode: { // كود خاص بتحليل أخطاء الصفحه
+            404: function (){
+                $("#procedure").text("لم يتم العثور على الصفحة");
+            }, 
+            403: function (){
+                $("#procedure").text("Bad request");
+            }
+        },
+        success:function(data){
+                
+           $('#chart').html(data);
+			//var data_chart = data;
+			//chart(data_chart);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $("#insert_data").text("errorrrrrrrrrrr");
+        },
+        complete: function (jqXHR, textStatus) {
+            //$("#insert_data").html(comment).fadeOut(5000);
+        }
+
+
+    });
+    
+    
+          
+}
 
 // حذف البيانات
 function take_form_delete() {
@@ -280,4 +273,15 @@ function take_form_delete() {
 ///////////////////////////////
 ////////////////////////////
 
-
+function chart(data_chart) {
+	alert(data_chart);
+Morris.Bar({
+ element : 'chart',
+ data:data_chart,
+ xkey:'year',
+ ykeys:['theRatio'],
+ labels:['النسبة'],
+ hideHover:'auto',
+ 
+});
+}

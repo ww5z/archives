@@ -9,7 +9,7 @@ include('Model/st_statistical_data/function.php');
 ?>
 
 
-<script type="text/javascript" src="js/st_department_addpercent.js"></script>
+<script type="text/javascript" src="js/st_department_chart.js"></script>
 
 
 
@@ -35,10 +35,7 @@ include('Model/st_statistical_data/function.php');
 </form>
 
 
-<br /> 
-<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6"  align='left'>
-	<button style="width: 150px; height: 30px" type="button" name="add" id="add_button" class="btn btn-success btn-xs">Add</button>
-</div>
+
 
     <br /> 
     <br /> 
@@ -71,7 +68,13 @@ include('Model/st_statistical_data/function.php');
   
           
           <div id="procedure"></div>
-
+<hr />
+  <br /><br />
+  <div class="container" style="width:900px;">
+   <h3 align="center">الرسم البياني</h3>   
+   <br /><br />
+   <div id="chart"></div>
+  </div>
           
           
           
@@ -113,13 +116,26 @@ echo "<option value='$i'>$i</option>";
 </select>
 </div>
 <div class="form-group">
-<select name="training_chapter" id="training_chapter" class="form-control" >
-	<option value="0">الفصل التدريبي</option>
-	<option value="1">الفصل الأول</option>
-	<option value="2">الفصل الثاني</option>
+<select name="month" id="month" class="form-control" required>
+<option value="">Month</option>
+
+<?php
+for ($i = 1; $i <= 12; $i++) {
+echo "<option value='$i'>$i</option>";
+}
+?>
 </select>
 </div>
-
+<div class="form-group">
+<select name="day" id="day" class="form-control" required>
+<option value="">Day</option>
+<?php
+for ($i = 1; $i <= 30; $i++) {
+echo "<option value='$i'>$i</option>";
+}
+?>
+</select>
+</div>
 </div>
 							
 <!--                            
@@ -169,7 +185,7 @@ $(document).ready(function(){
         var category_id = $('#category_id').val();
         var btn_action = 'load_brand';
         $.ajax({
-            url:"Model/st_statistical_data/st_department_addpercent_action.php",
+            url:"Model/st_statistical_data/st_department_addpercent_insert.php",
             method:"POST",
             data:{category_id:category_id, btn_action:btn_action},
             success:function(data)
@@ -183,7 +199,32 @@ $(document).ready(function(){
 
 
 
-   
+    $(document).on('click', '.update', function(){
+        var product_id = $(this).attr("id");
+        var btn_action = 'fetch_single';
+        $.ajax({
+            url:"product_action.php",
+            method:"POST",
+            data:{product_id:product_id, btn_action:btn_action},
+            dataType:"json",
+            success:function(data){
+                $('#productModal').modal('show');
+                $('#category_id').val(data.category_id);
+                $('#brand_id').html(data.brand_select_box);
+                $('#brand_id').val(data.brand_id);
+                $('#product_name').val(data.product_name);
+                $('#product_description').val(data.product_description);
+                $('#product_quantity').val(data.product_quantity);
+                $('#product_unit').val(data.product_unit);
+                $('#product_base_price').val(data.product_base_price);
+                $('#product_tax').val(data.product_tax);
+                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
+                $('#product_id').val(product_id);
+                $('#action').val("Edit");
+                $('#btn_action').val("Edit");
+            }
+        })
+    });
 
 
 
@@ -206,3 +247,77 @@ $(document).ready(function(){
 	  
 
 
+<script>
+$(document).ready(function(){
+ 
+ $(document).on('click', '.add', function(){
+  var html = '';
+  html += '<tr>';
+  html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+  html += '<td><input type="text" name="item_quantity[]" class="form-control item_quantity" /></td>';
+  html += '<td><select name="item_unit[]" class="form-control item_unit"><option value="">Select Unit</option><?php echo fill_unit_select_box($connect); ?></select></td>';
+  html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
+  $('#item_table').append(html);
+ });
+ 
+ $(document).on('click', '.remove', function(){
+  $(this).closest('tr').remove();
+ });
+ 
+ $('#insert_form').on('submit', function(event){
+  event.preventDefault();
+  var error = '';
+  $('.item_name').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Enter Item Name at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  $('.item_quantity').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Enter Item Quantity at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  
+  $('.item_unit').each(function(){
+   var count = 1;
+   if($(this).val() == '')
+   {
+    error += "<p>Select Unit at "+count+" Row</p>";
+    return false;
+   }
+   count = count + 1;
+  });
+  var form_data = $(this).serialize();
+  if(error == '')
+  {
+   $.ajax({
+    url:"insert.php",
+    method:"POST",
+    data:form_data,
+    success:function(data)
+    {
+     if(data == 'ok')
+     {
+      $('#item_table').find("tr:gt(0)").remove();
+      $('#error').html('<div class="alert alert-success">Item Details Saved</div>');
+     }
+    }
+   });
+  }
+  else
+  {
+   $('#error').html('<div class="alert alert-danger">'+error+'</div>');
+  }
+ });
+ 
+});
+</script>

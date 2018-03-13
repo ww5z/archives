@@ -9,12 +9,8 @@ if(!isset($_SESSION["type"]))
 }
 ?>
 <!DOCTYPE html><!--<3
-             _
-    ___ __ _| |_   _ _ __  ___  ___
-   / __/ _` | | | | | '_ \/ __|/ _ \
-  | (_| (_| | | |_| | |_) \__ \ (_) |
-   \___\__,_|_|\__, | .__/|___/\___/
-               |___/|_|
+
+تصميم وبرمجة المطور: مانع العمري
 
 --><html lang="ar" dir="rtl">
 	<head>
@@ -73,6 +69,8 @@ if(!isset($_SESSION["type"]))
 								<li><a href="st_statistical_system.php">الأقســــام</a></li>
 								<li><a href="st_department.php">اسماء البيانات</a></li>
 								<li><a href="st_department_addpercent.php">تسجل النسب الإحصائية</a></li>
+								<li><a href="st_department_chart.php">عرض الرسم البياني (تجريبي)</a></li>
+								<li><a href="st_department_section.php">عرض كامل القسم</a></li>
 							</ul>
 						</li>
 						

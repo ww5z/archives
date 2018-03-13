@@ -18,7 +18,11 @@ while($row = mysqli_fetch_array($result))
  $chart_data .= "{ year:'".$row["year"]."', theRatio:".$row["theRatio"]."}, ";
 }
 $chart_data = substr($chart_data, 0, -2);
+
+
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -32,24 +36,26 @@ $chart_data = substr($chart_data, 0, -2);
   
  </head>
  <body>
-  <br /><br />
-  <div class="container" style="width:900px;">
-   <h3 align="center">Last 10 Years Profit</h3>   
-   <br /><br />
+
    <div id="chart"></div>
-  </div>
- </body>
-</html>
+
 
 <script>
 //Bar, Line , Area || for Big Add: stacked:true
+
+	
+	var data_chart = [<?php echo $chart_data; ?>];
+			chart(data_chart);
+	//alert(data_chart);
+function chart(data_chart) {
 Morris.Bar({
  element : 'chart',
- data:[<?php echo $chart_data; ?>],
+ data:data_chart,
  xkey:'year',
  ykeys:['theRatio'],
  labels:['النسبة'],
  hideHover:'auto',
  
 });
+	}
 </script>
