@@ -17,7 +17,7 @@ if ( (isset($_POST['id'])) && (is_numeric($_POST['id'])) ) {
 
 
 $q = "SELECT * FROM st_statistical_data 
-INNER JOIN st_department_table ON st_department_table.id_Department = st_statistical_data.id_Department AND st_statistical_data.id_Department = '$number' ORDER BY st_statistical_data.year  ASC"; //SELECT * FROM st_statistical_data WHERE id_Department = '$number'
+INNER JOIN st_department_table ON st_department_table.id_Department = st_statistical_data.id_Department AND st_department_table.id_statistical = '$number' ORDER BY st_department_table.id_Department  ASC"; //SELECT * FROM st_statistical_data WHERE id_Department = '$number'
 
 $r = @mysqli_query ($dbc, $q); // Run the query.
 
