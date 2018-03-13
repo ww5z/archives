@@ -6,7 +6,7 @@ $( document ).ready( function(){
 		var category_id = $('#addpercent_id').val();
 		var btn_action = 'load_brand';
 		$.ajax({
-		url:"Model/st_statistical_data/st_department_addpercent_insert.php",
+		url:"Model/st_statistical_data/st_department_addpercent_action.php",
 		method:"POST",
 		data:{category_id:category_id, btn_action:btn_action},
 		success:function(data)
@@ -32,45 +32,8 @@ $( document ).ready( function(){
 	
  
 	
-//أوامر النموذج الإضافة والتعديل
-    $('#add_button').click(function(){
-		var addpercent_data = $('#addpercent_data').val();
-        
-		if (addpercent_data != 0){
-			$('#productModal').modal('show');
-			$('#product_form')[0].reset();
-		}
-        
-        $('.modal-title').html("<i class='fa fa-plus'></i> إضــافة نسبــــة");
-        $('#action').val("Add");
-        $('#btn_action').val("Add");
-		$('#id_statistical').val(0);
-		
-		$('#id_Department').val(addpercent_data);
-    });
 
-    $(document).on('submit', '#product_form', function(event){
-		var id_Department = $('#id_Department').val();
-		//var btn_action = $('#btn_action').val();
-        event.preventDefault();
-        $('#action').attr('disabled', 'disabled');
-        var form_data = $(this).serialize();
-        $.ajax({
-            url:"Model/st_statistical_data/st_department_addpercent_insert.php",
-            method:"POST",
-            data:form_data,
-            success:function(data)
-            {
-				//alert(btn_action)
-                $('#product_form')[0].reset();
-                $('#productModal').modal('hide');
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
-                $('#action').attr('disabled', false);
-                //productdataTable.ajax.reload();
-				take_followup_start(id_Department)
-            }
-        })
-    });
+
 
 
  

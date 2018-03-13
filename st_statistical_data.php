@@ -28,7 +28,13 @@ include('Model/st_statistical_data/function.php');
 	<div class="form-group">
 		<a href="st_department_addpercent.php" class="btn btn-primary">تسجيل النسب الإحصائية</a>
 	</div>
-	
+	<div class="form-group">
+		<a href="st_department_section.php" class="btn btn-primary">عرض كامل القسم</a>
+	</div>
+	<div class="form-group">
+		<a href="st_department_chart.php" class="btn btn-primary">عرض الرسم البياني (تجريبي)</a>
+	</div>
+
 </form>
 <br />
 <hr />
@@ -58,6 +64,9 @@ include('Model/st_statistical_data/function.php');
 			</div>
 		</div>
 	</div>
+		
+		
+		
 	<div class="col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading"><strong>Total Item in Stock</strong></div>
@@ -71,7 +80,7 @@ include('Model/st_statistical_data/function.php');
 	?>
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Order Value</strong></div>
+				<div class="panel-heading"><strong>Non</strong></div>
 				<div class="panel-body" align="center">
 					<h1>$<?php echo count_total_order_value($connect); ?></h1>
 				</div>
@@ -79,7 +88,7 @@ include('Model/st_statistical_data/function.php');
 		</div>
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Cash Order Value</strong></div>
+				<div class="panel-heading"><strong>Non</strong></div>
 				<div class="panel-body" align="center">
 					<h1>$<?php echo count_total_cash_order_value($connect); ?></h1>
 				</div>
@@ -87,7 +96,7 @@ include('Model/st_statistical_data/function.php');
 		</div>
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Credit Order Value</strong></div>
+				<div class="panel-heading"><strong>Non</strong></div>
 				<div class="panel-body" align="center">
 					<h1>$<?php echo count_total_credit_order_value($connect); ?></h1>
 				</div>
@@ -95,12 +104,12 @@ include('Model/st_statistical_data/function.php');
 		</div>
 		<hr />
 		<?php
-		if($_SESSION['type'] == 'master')
+		if($_SESSION['type'] == 'masterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
 		{
 		?>
 		<div class="col-md-12">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Order Value User wise</strong></div>
+				<div class="panel-heading"><strong>Non</strong></div>
 				<div class="panel-body" align="center">
 					<?php echo get_user_wise_total_order($connect); ?>
 				</div>

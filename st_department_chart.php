@@ -185,7 +185,7 @@ $(document).ready(function(){
         var category_id = $('#category_id').val();
         var btn_action = 'load_brand';
         $.ajax({
-            url:"Model/st_statistical_data/st_department_addpercent_insert.php",
+            url:"Model/st_statistical_data/st_department_chart_action.php",
             method:"POST",
             data:{category_id:category_id, btn_action:btn_action},
             success:function(data)
